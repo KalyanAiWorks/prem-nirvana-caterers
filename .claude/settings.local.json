@@ -1,0 +1,11 @@
+{
+  "permissions": {
+    "allow": [
+      "WebFetch(domain:foodtalescatering.com)",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\" http://localhost:5174/)",
+      "Bash(convert /home/ubuntu/foodtales-site/public/logo.png -fuzz 25% -transparent white -transparent \"#f0f0f0\" -transparent \"#e0e0e0\" /home/ubuntu/foodtales-site/public/logo.png)",
+      "Bash(node --input-type=module --eval \"import\\('./src/App.jsx'\\)\")",
+      "Bash(npx vite *)"
+    ]
+  }
+}
