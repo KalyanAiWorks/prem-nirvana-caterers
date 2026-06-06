@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react'
 
-const IMG = '/foodtalescatering.com'
+const IMG = 'https://foodtalescatering.com'
 
 const SPECIALTIES = [
   { img: `${IMG}/master/product_image/1187926847`, name: 'Mughlai' },
@@ -482,100 +482,247 @@ ${MENU_CATEGORIES.map(cat => `${cat.name}: ${cat.items.join(', ')}`).join('\n')}
   }
 
   return (
-    <div className="fixed bottom-5 left-2 sm:left-5 z-[60]" style={{ maxWidth: 'calc(100vw - 16px)' }}>
+    <>
+      {/* ── Chatbot popup ── */}
       {open && (
-        <div className="chatbot-window mb-3 flex flex-col overflow-hidden rounded-[16px] shadow-2xl bg-[#1a1a1a]">
-          {/* Header with gold gradient */}
-          <div style={{ background: 'linear-gradient(135deg, #e4c590 0%, #d4a574 100%)' }} className="flex items-center justify-between px-4 py-3 shrink-0">
-            <div className="flex items-center gap-3">
-              <img src="/logo.png" alt="Prem Nirvana" style={{ height: '30px', width: 'auto' }} />
+        <div className="chatbot-popup">
+          {/* Header */}
+          <div className="chatbot-header">
+            <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+              <img src="/logo.png" alt="Prem Nirvana" style={{ height: '32px', width: 'auto' }} />
               <div>
-                <div className="text-sm font-bold text-[#1a1a1a]">PREM NIRVANA AI</div>
-                <div className="text-xs text-[#333]">Ask us about menus, pricing & events</div>
+                <div style={{ fontSize: '14px', fontWeight: 700, color: '#1a1a1a', fontFamily: '"DM Sans", sans-serif', letterSpacing: '0.05em' }}>PREM NIRVANA AI</div>
+                <div style={{ fontSize: '11px', color: '#444', fontFamily: '"DM Sans", sans-serif' }}>Ask about menus, pricing & events</div>
               </div>
             </div>
             <button
               type="button"
-              className="text-2xl leading-none text-[#1a1a1a] hover:text-[#0a0a0a]"
               onClick={() => setOpen(false)}
               aria-label="Close chatbot"
+              className="chatbot-close-btn"
             >
-              ×
+              ✕
             </button>
           </div>
 
-          {/* Chat area */}
-          <div className="flex-1 space-y-3 overflow-y-auto p-4 bg-[#1a1a1a]">
+          {/* Messages */}
+          <div className="chatbot-messages">
             {messages.map((message, index) => (
               <div
                 key={message.role + index}
-                className={`max-w-[85%] rounded-lg px-3 py-2 text-sm leading-relaxed ${
-                  message.role === "user"
-                    ? "ml-auto bg-[#e4c590] text-[#1a1a1a] font-medium"
-                    : "mr-auto bg-[#2a2a2a] text-white"
-                }`}
+                className={`chatbot-bubble ${message.role === 'user' ? 'chatbot-bubble-user' : 'chatbot-bubble-bot'}`}
               >
                 {message.content}
               </div>
             ))}
             {loading && (
-              <div className="mr-auto max-w-[85%] rounded-lg bg-[#2a2a2a] px-3 py-2 text-sm text-white">
-                <span style={{ display: 'inline-flex', gap: '4px', alignItems: 'center' }}>
-                  <span style={{ animation: 'dot-bounce 1.2s ease-in-out infinite', animationDelay: '0s', fontSize: '8px' }}>●</span>
-                  <span style={{ animation: 'dot-bounce 1.2s ease-in-out infinite', animationDelay: '0.2s', fontSize: '8px' }}>●</span>
-                  <span style={{ animation: 'dot-bounce 1.2s ease-in-out infinite', animationDelay: '0.4s', fontSize: '8px' }}>●</span>
+              <div className="chatbot-bubble chatbot-bubble-bot">
+                <span className="chatbot-dots">
+                  <span>●</span><span>●</span><span>●</span>
                 </span>
               </div>
             )}
             <div ref={messagesEndRef} />
           </div>
 
-          {/* Input area */}
-          <form className="flex gap-2 p-3 bg-[#1a1a1a] border-t border-[#333] shrink-0" onSubmit={sendMessage}>
+          {/* Input */}
+          <form className="chatbot-input-area" onSubmit={sendMessage}>
             <input
               type="text"
               value={input}
-              onChange={(event) => setInput(event.target.value)}
-              className="min-w-0 flex-1 rounded-md border-2 border-[#e4c590] bg-[#0a0a0a] px-3 py-2 text-sm text-white outline-none placeholder:text-[#666] focus:border-[#d4a574]"
+              onChange={(e) => setInput(e.target.value)}
               placeholder="Ask about catering..."
               maxLength={500}
+              className="chatbot-input"
             />
-            <button
-              type="submit"
-              className="rounded-md bg-[#e4c590] px-4 text-sm font-bold uppercase tracking-wider text-[#1a1a1a] hover:bg-[#d4a574] transition-colors disabled:opacity-60"
-              disabled={loading}
-            >
-              Send
+            <button type="submit" disabled={loading} className="chatbot-send-btn" aria-label="Send message">
+              <svg viewBox="0 0 24 24" fill="currentColor" style={{ width: '20px', height: '20px' }}>
+                <path d="M2 21l21-9L2 3v7l15 2-15 2v7z"/>
+              </svg>
             </button>
           </form>
         </div>
       )}
 
-      {/* Floating chat button with bounce animation */}
+      {/* ── Styles ── */}
       <style>{`
-        @keyframes bounce {
-          0%, 100% { transform: translateY(0); }
-          50% { transform: translateY(-8px); }
+        /* === Popup container === */
+        .chatbot-popup {
+          position: fixed;
+          inset: 0;
+          z-index: 200;
+          display: flex;
+          flex-direction: column;
+          background: #1a1a1a;
+          animation: chatbot-open 0.22s ease both;
         }
+        @media (min-width: 640px) {
+          .chatbot-popup {
+            inset: auto;
+            bottom: 80px;
+            right: 20px;
+            width: 400px;
+            height: 560px;
+            border-radius: 16px;
+            box-shadow: 0 24px 64px rgba(0,0,0,0.6), 0 0 0 1px rgba(228,197,144,0.15);
+            overflow: hidden;
+          }
+        }
+        @keyframes chatbot-open {
+          from { opacity: 0; transform: scale(0.96) translateY(12px); }
+          to   { opacity: 1; transform: scale(1)    translateY(0); }
+        }
+
+        /* === Header === */
+        .chatbot-header {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          padding: 14px 16px;
+          flex-shrink: 0;
+          background: linear-gradient(135deg, #e4c590 0%, #d4a574 100%);
+        }
+        .chatbot-close-btn {
+          width: 36px;
+          height: 36px;
+          min-width: 36px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          background: rgba(0,0,0,0.15);
+          border: none;
+          border-radius: 50%;
+          font-size: 15px;
+          color: #1a1a1a;
+          cursor: pointer;
+          font-weight: 700;
+          line-height: 1;
+          transition: background 0.15s;
+        }
+        .chatbot-close-btn:hover { background: rgba(0,0,0,0.28); }
+
+        /* === Messages === */
+        .chatbot-messages {
+          flex: 1;
+          overflow-y: auto;
+          padding: 16px;
+          display: flex;
+          flex-direction: column;
+          gap: 12px;
+          background: #141414;
+          -webkit-overflow-scrolling: touch;
+        }
+        .chatbot-bubble {
+          max-width: 82%;
+          padding: 10px 14px;
+          font-size: 15px;
+          line-height: 1.55;
+          font-family: "DM Sans", sans-serif;
+          word-break: break-word;
+          white-space: pre-wrap;
+        }
+        .chatbot-bubble-bot {
+          align-self: flex-start;
+          background: #2c2c2c;
+          color: #efefef;
+          border-radius: 4px 16px 16px 16px;
+        }
+        .chatbot-bubble-user {
+          align-self: flex-end;
+          background: #e4c590;
+          color: #1a1a1a;
+          font-weight: 600;
+          border-radius: 16px 4px 16px 16px;
+        }
+
+        /* === Loading dots === */
+        .chatbot-dots {
+          display: inline-flex;
+          gap: 5px;
+          align-items: center;
+          padding: 2px 0;
+        }
+        .chatbot-dots span {
+          font-size: 9px;
+          animation: dot-bounce 1.2s ease-in-out infinite;
+          opacity: 0.4;
+        }
+        .chatbot-dots span:nth-child(2) { animation-delay: 0.2s; }
+        .chatbot-dots span:nth-child(3) { animation-delay: 0.4s; }
         @keyframes dot-bounce {
           0%, 80%, 100% { transform: scale(0.6); opacity: 0.4; }
-          40% { transform: scale(1); opacity: 1; }
+          40%           { transform: scale(1);   opacity: 1;   }
+        }
+
+        /* === Input area === */
+        .chatbot-input-area {
+          display: flex;
+          align-items: center;
+          gap: 10px;
+          padding: 12px 16px;
+          background: #1a1a1a;
+          border-top: 1px solid #2e2e2e;
+          flex-shrink: 0;
+        }
+        .chatbot-input {
+          flex: 1;
+          min-height: 44px;
+          padding: 10px 14px;
+          border-radius: 10px;
+          border: 2px solid #e4c590;
+          background: #0d0d0d;
+          color: #fff;
+          font-size: 15px;
+          font-family: "DM Sans", sans-serif;
+          outline: none;
+          min-width: 0;
+          transition: border-color 0.15s;
+        }
+        .chatbot-input::placeholder { color: #555; }
+        .chatbot-input:focus { border-color: #d4a574; }
+        .chatbot-send-btn {
+          flex-shrink: 0;
+          width: 44px;
+          height: 44px;
+          min-width: 44px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          background: #e4c590;
+          color: #1a1a1a;
+          border: none;
+          border-radius: 10px;
+          cursor: pointer;
+          transition: background 0.15s, transform 0.1s;
+        }
+        .chatbot-send-btn:hover:not(:disabled) { background: #d4a574; }
+        .chatbot-send-btn:active:not(:disabled) { transform: scale(0.94); }
+        .chatbot-send-btn:disabled { opacity: 0.45; cursor: not-allowed; }
+
+        /* === Floating button === */
+        @keyframes bounce {
+          0%, 100% { transform: translateY(0); }
+          50%       { transform: translateY(-8px); }
         }
         .chat-bounce {
           animation: bounce 1.5s cubic-bezier(0.4, 0, 0.6, 1) infinite;
         }
       `}</style>
-      <button
-        type="button"
-        onClick={() => setOpen((value) => !value)}
-        className="chat-bounce flex h-[55px] w-[55px] items-center justify-center rounded-full bg-[#e4c590] text-white shadow-2xl transition-transform hover:scale-110 cursor-pointer"
-        aria-label="Open AI chatbot"
-      >
-        <svg viewBox="0 0 24 24" aria-hidden="true" className="h-7 w-7 fill-current">
-          <path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2z"/>
-        </svg>
-      </button>
-    </div>
+
+      {/* ── Floating button ── */}
+      <div className="fixed bottom-5 right-2 sm:right-5 z-[60]">
+        <button
+          type="button"
+          onClick={() => setOpen((v) => !v)}
+          className="chat-bounce flex h-[55px] w-[55px] items-center justify-center rounded-full bg-[#e4c590] text-white shadow-2xl transition-transform hover:scale-110 cursor-pointer"
+          aria-label="Open AI chatbot"
+        >
+          <svg viewBox="0 0 24 24" aria-hidden="true" className="h-7 w-7 fill-current">
+            <path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2z"/>
+          </svg>
+        </button>
+      </div>
+    </>
   )
 }
 
@@ -1733,7 +1880,7 @@ export default function App() {
                 <p className="text-white/85 leading-relaxed mb-6">
                   Call: +91 7780797066
                   <br />
-                  premnirvanacaterers@gmail.com
+                  gopinath@premnirvanacaterers.com
                 </p>
                 <a href="tel:+917780797066" className="theme-btn theme-btn-outline">
                   Call Now
@@ -1868,8 +2015,8 @@ export default function App() {
                   </a>
                 </li>
                 <li>
-                  <a href="mailto:premnirvancaterers@gmail.com" className="hover:text-gold transition-colors duration-200 flex items-center gap-2">
-                    📧 <span>premnirvancaterers@gmail.com</span>
+                  <a href="mailto:gopinath@premnirvanacaterers.com" className="hover:text-gold transition-colors duration-200 flex items-center gap-2">
+                    📧 <span>gopinath@premnirvanacaterers.com</span>
                   </a>
                 </li>
                 <li>
@@ -1908,7 +2055,7 @@ export default function App() {
         href="https://wa.me/919949753542?text=Hi!%20I'm%20interested%20in%20Prem%20Nirvana%20Caterers%20services.%20Can%20you%20share%20more%20details?"
         target="_blank"
         rel="noreferrer"
-        className="contact-float whatsapp-float fixed bottom-[88px] right-5 z-[60] flex h-[60px] w-[60px] items-center justify-center rounded-full bg-[#25D366] text-white shadow-2xl transition-transform hover:scale-105"
+        className="contact-float whatsapp-float fixed bottom-[88px] left-5 z-[60] flex h-[60px] w-[60px] items-center justify-center rounded-full bg-[#25D366] text-white shadow-2xl transition-transform hover:scale-105"
         aria-label="Chat on WhatsApp"
       >
         <svg viewBox="0 0 32 32" aria-hidden="true" className="h-8 w-8 fill-current">
@@ -1918,7 +2065,7 @@ export default function App() {
 
       <a
         href="tel:+919949753542"
-        className="contact-float call-float fixed bottom-5 right-5 z-[60] flex h-[60px] w-[60px] items-center justify-center rounded-full bg-[#1d74d8] text-white shadow-2xl transition-transform hover:scale-105"
+        className="contact-float call-float fixed bottom-5 left-5 z-[60] flex h-[60px] w-[60px] items-center justify-center rounded-full bg-[#1d74d8] text-white shadow-2xl transition-transform hover:scale-105"
         aria-label="Call Prem Nirvana Caterers"
       >
         <svg viewBox="0 0 24 24" aria-hidden="true" className="h-7 w-7 fill-current">
