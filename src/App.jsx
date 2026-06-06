@@ -28,82 +28,128 @@ const OFFERS = [
 
 const MENU_CATEGORIES = [
   {
-    name: 'Salads & Drinks',
-    items: [
-      'Green Salad', 'Sprouts Salad', 'Corn Salad', 'Chana Salad', 'Russian Salad', 'Macaroni Salad',
-      'Fruit Salad', 'Veg Mayonnaise Salad', 'Soft Drinks', 'Fruit Punch', 'Grape Juice', 'Watermelon Juice',
-      'Muskmelon Juice', 'Seasonal Juice', 'Pineapple Juice', 'Sugarcane Juice', 'Mango Juice', 'Tomato Juice',
-      'Black Current', 'Orange Juice', 'Buttermilk', 'Sweet Lassi', 'Salt Lassi', 'Raona', 'Badam Milk',
-    ],
+    name: 'Salads',
+    items: ['Green Salad','Sprouts Salad','Corn Salad','Chana Salad','Russian Salad','Macaroni Salad','Fruit Salad','Veg Mayonnaise'],
   },
   {
-    name: 'Sweets & Ice Creams',
-    items: [
-      'Bobbatlu', 'Purnam Burelu', 'Badusha', 'Gulab Jamun', 'Laddu', 'Mysore Pak', 'Raava Kesari',
-      'Kachkeni Halol', 'Basundhi', 'Obbattu ka Meetha', 'Carrot Halwa', 'Kaddu Halwa', 'Tiranga Halwa',
-      'Payasam', 'Cheese Kanafa', 'Qurbani Ka Meetha', 'Vanilla', 'Strawberry', 'Butter Scotch', 'Chocolate',
-      'Mango', 'Pista', 'Kesar Pista', 'Black Current', 'Tutti Frutti', 'Mixed Fruit', 'Dry Fruits', 'Kulfi',
-      'Matka Kulfi', 'Stone Ice Cream', 'Ice Cream Fry',
-    ],
+    name: 'Drinks & Juices',
+    items: ['Soft Drinks','Fruit Punch','Grape Juice','Watermelon Juice','Muskmelon Juice','Pineapple Juice','Sugarcane Juice','Mango Juice','Guava Juice','Seasonal Juice','Black Currant','Orange Juice','Buttermilk','Sweet Lassi','Salt Lassi','Rasna','Badam Milk'],
   },
   {
-    name: 'Tiffins, Rotis & Rice',
-    items: [
-      'Idly', 'Vada', 'Upma', 'Tomato Bath', 'Onion Dosa', 'Masala Dosa', 'Mysore Bajji', 'Set Dosa',
-      'Puri with Alu Curry', 'Pesarattu', 'Bahara', 'Tea', 'Coffee', 'Milk', 'Vijaypuri', 'Chapathi', 'Pulka',
-      'Butter Naan', 'Rukhte Naan', 'Rumali Roti', 'Palak Rumali Roti', 'Lacha Parota', 'Parota', 'Masala Puri',
-      'Methi Puri', 'Plain Naan', 'Garlic Naan', 'Plain Rice', 'Bagara Rice', 'Veg Biryani', 'Veg Dum Biryani',
-      'Kashmiri Pulav', 'Kaju Rice', 'Lemon Rice', 'Tomato Rice', 'Coconut Rice', 'Pulihora', 'Bisibelle Bath',
-      'Jackfruit Biryani',
-    ],
+    name: 'Sweets',
+    items: ['Bobbatlu','Purnam Boorelu','Badusha','Gulab Jamun','Kala Jamun','Laddu','Mysore Pak','Ravva Kesari','Rasmalai','Kashmiri Rabdi','Basundhi','Double Ka Meetha','Carrot Halwa','Kaddu Ka Kheer'],
   },
   {
-    name: 'Veg Curries & Dal',
-    items: [
-      'Paneer Butter Masala', 'Kadai Paneer', 'Paneer Tikka Masala', 'Palak Paneer', 'Mushroom Masala',
-      'Veg Curry', 'Bagara Baigan', 'Mix Veg Curry', 'Alu Mutter', 'Capsicum Masala', 'Kadai Curry',
-      'Corn Cheese', 'Mushroom 65', 'Paneer Chupati', 'Gatte ki Sabji', 'Paneer 65', 'Baby Corn 65',
-      'Veg Manchuria', 'Paneer Tikka', 'Veg Bullet', 'Gold Coin', 'Cut Mirchi', 'Onion Pakoda', 'Veg Crispy',
-      'Mirchi Kabab', 'Cheese Corn Balla', 'Spring Roll', 'Tomato Pappu', 'Palakura Pappu', 'Gongura Pappu',
-      'Dosakaya Pappu', 'Mango Dal', 'Dal Fry', 'Dal Tadka', 'Gongurpappu', 'Palak Dal', 'Alu Fry',
-      'Aratikaya Fry', 'Donda Fry', 'Cauliflower Fry', 'Bhendi Fry', 'Kanda Fry', 'Mushroom Fry', 'Gold Fry',
-      'Crispy Veg Fry', 'Banana Fry',
-    ],
+    name: 'Tiffins',
+    items: ['Idly','Vada','Upma','Tomato Bath','Onion Dosa','Masala Dosa','Set Dosa','Mysore Bajji','Puri','Methi Puri','Uttapam','Pesarattu','Batura','Tea','Coffee','Milk'],
   },
   {
-    name: 'Sambars, Sides & Chaat',
-    items: [
-      'Tomato Soup', 'Sweet Corn Soup', 'Veg Clear Soup', 'Hot Sour Soup', 'Mushroom Soup', 'Palak Soup',
-      'Tiffin Sambar', 'Vegetable Sambar', 'Drumstick Sambar', 'Mixed Veg Sambar', 'Onion Sambar', 'Rasam',
-      'Miryam Rassam', 'Tomato Rasam', 'Ulava Charu', 'Ulava Charu with Coconut', 'Majjiga Pulusu', 'Nighty',
-      'Mango Pickle', 'Gongura Pickle', 'Lemon Pickle', 'Tomato Pickle', 'Dosakaya Pickle', 'Beerakaya Pachadi',
-      'Venkaya Pachadi', 'Gondakaya Pachadi', 'Allum Chutney', 'Polli Chutney', 'Kandi Podi', 'Karingapalu Podi',
-      'Vellulli Karam', 'Nalla Karam', 'Ghee', 'Papad', 'Masala Papad', 'Wheels', 'Challa Michi',
-      'Gummadi Vadiyalu', 'Minapa Vadiyalu', 'Pesara Vadiyalu', 'Alu Chips', 'Aratikaya Chips', 'Dappalams',
-      'Panipuri', 'Delhi Puri', 'Delhi Papdi', 'Ragda Cutlet', 'Pav Bhaji', 'Samosa', 'Sandwich',
-    ],
+    name: 'Rotis',
+    items: ['Chapathi','Pulka','Butter Naan','Kulcha Naan','Rumali Roti','Palak Rumali Roti','Lachha Parota','Parota','Masala Puri','Methi Puri','Plain Naan','Garlic Naan'],
   },
   {
-    name: 'Non-Veg',
-    items: [
-      'Chicken 65', 'Chicken Fry', 'Chicken Tikka', 'Apollo Chicken', 'Chicken Majestic', 'Chicken Lollypop',
-      'Darjeeling Chicken', 'Chicken Tandoori', 'Chicken Crispy', 'Mutton Fry', 'Batk Fry', 'Chicken Soup',
-      'Paya', 'Mutton Shorva', 'Chicken Haleem', 'Onion Soup', 'Mutton Curry', 'Mutton Korma', 'Mutton Masala',
-      'Mutton Sahi', 'Mutton Liver Fry', 'Mutton Keema', 'Mutton Rogan Josh', 'Paya Curry', 'Gongura Chicken',
-      'Dosakaya Chicken', 'Starlion Chicken', 'Chicken Gongura', 'Natakodi Curry', 'Green Chicken Curry',
-      'Achari Chicken Curry', 'Methi Chicken Curry', 'Mathi Chicken Curry', 'Crab Fry', 'Apollo Fish', 'Fish Finger',
-      'Fish Curry', 'Chicken Dum Biryani', 'Mutton Dum Biryani', 'Egg Dum Biryani', 'Fish Dum Biryani',
-      'Prawns Dum Biryani', 'Hyderabadi Biryani', 'Chicken Fry Piece Biryani', 'Annavamryalu', 'Fish Pittu',
-      'Crisp Chicken', 'Chicken Pulusu', 'Natakodi Pulusu',
-    ],
+    name: 'Veg Starters',
+    items: ['Paneer 65','Baby Corn 65','Veg Manchuria','Paneer Tikka','Veg Spring Roll','Veg Shanghai Roll','Gold Coin','Veg Bullet','Cut Mirchi','Mirchi Bajji','Masala Wada','Corn Cheese Balls','Mushroom 65','Paneer Chutput','Gobi 65','Veg Crispy','Hara Bhara Kabab','Cheese Corn Roll','Veg Fingers','Crispy Corn','Paneer Popcorn','Baby Corn Manchuria','Mushroom Pepper Fry','Veg Kebab'],
+  },
+  {
+    name: 'Veg Currys',
+    items: ['Paneer Butter Masala','Paneer Tikka Masala','Shahi Paneer','Kadai Paneer','Palak Paneer','Methi Chaman','Paneer Kolhapuri','Veg Kadai','Veg Kolhapuri','Veg Chatpata','Veg Jaipuri','Navratan Korma','Veg Makhanwala','Malai Kofta','Dum Aloo','Aloo Gobi','Gutthi Vankaya','Bagara Baingan','Tomato Curry','Kaju Drumsticks','Kaju Paneer','Mushroom Masala','Mushroom Kadai','Baby Corn Masala','Baby Corn Kadai','Mirchi Masala','Rajma Masala','Aloo Vankaya Tomato','Capsicum Masala','Chole Masala'],
+  },
+  {
+    name: 'Rice Items',
+    items: ['Plain Rice','Bagara Rice','Jeera Rice','Ghee Rice','Coconut Rice','Lemon Rice','Tomato Rice','Curds Rice','Pudina Rice','Vangi Bath','Pulihora','Bisibele Bath','Veg Fried Rice','Veg Schezwan Rice'],
+  },
+  {
+    name: 'Veg Biryanis',
+    items: ['Veg Biryani','Veg Dum Biryani','Veg Hyderabadi Biryani','Paneer Biryani','Mushroom Biryani','Kaju Biryani','Baby Corn Biryani'],
+  },
+  {
+    name: 'Dal Items',
+    items: ['Dal Fry','Dal Tadka','Dal Makhani','Tomato Dal','Palak Dal','Dosakaya Dal','Gongura Dal','Mango Dal','Gangabayala Pappu','Muddha Pappu','Palakura Pappu','Beerakaya Pappu','Sorakaya Pappu','Chukkakura Pappu','Menthi Kura Pappu','Rajma'],
+  },
+  {
+    name: 'Fry Currys',
+    items: ['Aloo Fry Curry','Aloo Pepper Fry','Beans Fry Curry','Beetroot Fry Curry','Gobi Fry Curry','Mushroom Fry','Baby Corn Fry Curry','Brinjal Fry Curry','Bendakaya Fry Curry','Aratikaya Fry','Dondakaya Fry','Chikkudukaya Fry','Cabbage Beans Carrot Coconut Mix Poriyal'],
+  },
+  {
+    name: 'Deep Fry / Dry',
+    items: ['Bendi Fry','Dondakaya Fry','Cabbage Fry','Gobi 65','Veg Crispy','Chips'],
+  },
+  {
+    name: 'Chutneys',
+    items: ['Tomato Chutney','Beerakaya Chutney','Dosakaya Mukkala Pachadi','Dosakaya Roti Chutney','Pudina Chutney','Dondakaya Chutney','Allam Chutney','Kobbari Pachadi','Palli Chutney','Gongura Chutney','Vankaya Chutney'],
+  },
+  {
+    name: 'Pickles',
+    items: ['Avakaya (Mango Pickle)','Gongura Pickle','Tomato Pickle','Lemon Pickle','Usiri Pickle (Amla)','Mixed Veg Pickle','Chintakaya Pickle','Vankaya Pickle','Dondakaya Pickle','Dosa Avakaya','Small Onion Pickle (Ullipaya)'],
+  },
+  {
+    name: 'Papad & Fryums',
+    items: ['Papad','Fryums','Masala Papad','Gummadi Vadiyalu','Vadiyalu','Challa Mirchi'],
+  },
+  {
+    name: 'Sambars & Rasams',
+    items: ['Sambar','Drumstick Sambar','Mixed Veg Sambar','Dappalam Sambar','Tomato Rasam','Pepper Rasam','Jeera Rasam','Mukkala Pulusu','Chintha Pulusu','Ulava Charu','Pachi Pulusu','Majjiga Pulusu'],
+  },
+  {
+    name: 'Raithas & Curd',
+    items: ['Plain Curd','Curd with Onion','Plain Raitha','Onion Raitha','Boondi Raitha','Cucumber Raitha','Tomato Raitha','Mint Raitha'],
+  },
+  {
+    name: 'Desserts',
+    items: ['Kulfi','Pudding','Apricot Delight','Chocobar','Ice Cream Cone','Custard Fruits','Cut Fruit Salad'],
+  },
+  {
+    name: 'Ice Cream Flavors',
+    items: ['Vanilla','Strawberry','Butterscotch','Chocolate','Pista (Pistha)','Dry Fruits','Black Currant','Jamoon (Jamun)','Sitaphal (Custard Apple)'],
+  },
+  {
+    name: 'Snacks',
+    items: ['Onion Samosa','Corn Samosa','Aloo Bonda','Biscuits','Bajjis','Veg Cutlet','Veg Puff','Aloo Puff','Onion Pakoda','Mirchi Bajji','Punugulu','Garelu'],
+  },
+  {
+    name: 'Fruits',
+    items: ['Apple','Banana','Papaya','Pineapple','Watermelon','Muskmelon','Grapes','Pomegranate','Orange','Guava','Sweet Lime (Mosambi)','Chickoo (Sapota)','Sweet Tamarind','Dates','Dragon Fruit','Kiwi','Black Currant','Sitaphal (Custard Apple)'],
+  },
+  {
+    name: 'Chaat Items',
+    items: ['Pani Puri','Masala Puri','Bhel Puri','Sev Puri','Dahi Puri','Aloo Chaat','Papdi Chaat','Samosa Chaat','Ragda Pattice','Corn Chaat','Fruit Chaat'],
   },
   {
     name: 'Live Counters',
-    items: [
-      'Live Chaat Counter', 'Live Dosa Counter', 'Live Idly Counter', 'Live Puri Puri Counter',
-      'Live Pav Bhaji Counter', 'Live Pasta Counter', 'Live Fried Rice Counter', 'Live Chinese Varieties Counter',
-      'Live Poori Counter', 'Live Paratha Counter', 'Live Rasmalai Counter', 'Live BBQ Counter', 'Live Tandoor Counter',
-    ],
+    items: ['Dosa Counter','Uttapam Counter','Chaat Counter','Pav Bhaji Counter','Pasta Counter','Chinese Stir Fry','Noodle Counter','Manchurian Counter','Soup Counter','Tawa Veg Counter','Tandoori Veg Counter','Paneer Tikka Counter','Jalebi Counter','Malpua Counter','Kebab Counter','Mocktail Counter','Fresh Juice Counter','Ice Cream Counter','Kulfi Counter','Chocolate Fountain','Live Sandwich Counter'],
+  },
+  {
+    name: 'Delhi Chat Items',
+    items: ['Panipuri','Dahi Puri','Sev Puri','Bhel Puri','Aloo Chaat','Papdi Chaat','Ragda Pattice','Dahi Vada','Dahi Papdi','Chole Kulche','Raj Kachori','Pav Bhaji','Cutlet','Samosa Chaat','Tikki Chaat'],
+  },
+  {
+    name: 'Non-Veg Starters',
+    items: ['Chicken Soup','Boiled Fried Eggs','Pepper Eggs','Roasted Eggs','Egg Spicy Omlet'],
+  },
+  {
+    name: 'Chicken Snacks',
+    items: ['Chicken Fry','Chicken 65','Chicken Tikka','Chicken Chilli','Chicken Pepper','Chicken Kabab','Chicken Majestic','Chicken Tandoori','Chicken Manchurian','Chicken Tandgi Kabab','Chicken Roast','Chicken Crispy','Chicken Pakoda'],
+  },
+  {
+    name: 'Fish Snacks',
+    items: ['Fish Fry','Fish Pittu','Fish Appolo','Fish Finger','Fish Pepper','Fish Kabab','Fish Masala Wada','Fish Solid Fry'],
+  },
+  {
+    name: 'Mutton Snacks',
+    items: ['Mutton Fry','Mutton Sheek Kabab','Mutton Pattar Ka Gosh','Mutton Kabab','Mutton Keema Balls','Mutton Masala Wada','Mutton Tangdi Kabab','Mutton 65','Mutton Pepper','Mutton Roast','Mutton Kheema Mutti'],
+  },
+  {
+    name: 'Non-Veg Special',
+    items: ['Prawns Fry','Prawns Roast','Prawns 65','Prawns Pepper','Prawns Ginger','Gongura Prawns','Crabs Fry','Crabs Roast','Gongura Crabs','Boti Fry','Talakaya Curry','Paya Shorba','Bheja Fry'],
+  },
+  {
+    name: 'Non-Veg Curries',
+    items: ['Egg Curry','Egg Miryam','Fish Curry','Fish Pulusu','Chicken Curry','Chicken Dumka','Chicken Ginger','Chicken Gongura','Chicken Achari','Chicken Kumra','Mutton Curry','Mutton Kurma','Mutton Alu Kurma','Mutton Muragh','Mutton Butter Masala'],
+  },
+  {
+    name: 'Non-Veg Biryanis',
+    items: ['Egg Dum Biryani','Fish Dum Biryani','Prawns Dum Biryani','Crabs Dum Biryani','Chicken Dum Biryani','Mutton Dum Biryani','Hundi Dum Biryani','Hyderabadi Moghalai Biryani'],
   },
 ]
 
@@ -125,6 +171,41 @@ const MENU_IMAGE_POOL = [
   IMG + "/master/product_image/1376751742",
   IMG + "/master/product_image/1759158828",
 ]
+
+const CATEGORY_IMAGES = {
+  "Salads": "https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=400&h=300&fit=crop",
+  "Drinks & Juices": "https://images.unsplash.com/photo-1534353473418-4cfa6c56fd38?w=400&h=300&fit=crop",
+  "Sweets": "https://images.unsplash.com/photo-1548848221-0c2e497ed557?w=400&h=300&fit=crop",
+  "Tiffins": "https://images.unsplash.com/photo-1589301760014-d929f3979dbc?w=400&h=300&fit=crop",
+  "Rotis": "https://images.unsplash.com/photo-1565557623262-b51c2513a641?w=400&h=300&fit=crop",
+  "Veg Starters": "https://images.unsplash.com/photo-1601050690597-df0568f70950?w=400&h=300&fit=crop",
+  "Veg Currys": "https://images.unsplash.com/photo-1585937421612-70a008356fbe?w=400&h=300&fit=crop",
+  "Rice Items": "https://images.unsplash.com/photo-1596097635121-14b63a7e0c69?w=400&h=300&fit=crop",
+  "Veg Biryanis": "https://images.unsplash.com/photo-1563379091339-03b21ab4a4f8?w=400&h=300&fit=crop",
+  "Dal Items": "https://images.unsplash.com/photo-1546833999-b9f581a1996d?w=400&h=300&fit=crop",
+  "Fry Currys": "https://images.unsplash.com/photo-1567188040759-fb8a883dc6d8?w=400&h=300&fit=crop",
+  "Deep Fry / Dry": "https://images.unsplash.com/photo-1606491956689-2ea866880049?w=400&h=300&fit=crop",
+  "Chutneys": "https://images.unsplash.com/photo-1599487488170-d11ec9c172f0?w=400&h=300&fit=crop",
+  "Pickles": "https://images.unsplash.com/photo-1589621316382-008455b857cd?w=400&h=300&fit=crop",
+  "Papad & Fryums": "https://images.unsplash.com/photo-1601050690597-df0568f70950?w=400&h=300&fit=crop",
+  "Sambars & Rasams": "https://images.unsplash.com/photo-1547592180-85f173990554?w=400&h=300&fit=crop",
+  "Raithas & Curd": "https://images.unsplash.com/photo-1488477181946-6428a0291777?w=400&h=300&fit=crop",
+  "Desserts": "https://images.unsplash.com/photo-1551024506-0bccd828d307?w=400&h=300&fit=crop",
+  "Ice Cream Flavors": "https://images.unsplash.com/photo-1501443762994-82bd5dace89a?w=400&h=300&fit=crop",
+  "Snacks": "https://images.unsplash.com/photo-1601050690597-df0568f70950?w=400&h=300&fit=crop",
+  "Fruits": "https://images.unsplash.com/photo-1619566636858-adf3ef46400b?w=400&h=300&fit=crop",
+  "Chaat Items": "https://images.unsplash.com/photo-1606491956689-2ea866880049?w=400&h=300&fit=crop",
+  "Live Counters": "https://images.unsplash.com/photo-1555244162-803834f70033?w=400&h=300&fit=crop",
+  "Delhi Chat Items": "https://images.unsplash.com/photo-1606491956689-2ea866880049?w=400&h=300&fit=crop",
+  "Non-Veg Starters": "https://images.unsplash.com/photo-1632778149955-e80f8ceca2e8?w=400&h=300&fit=crop",
+  "Chicken Snacks": "https://images.unsplash.com/photo-1562967914-608f82629710?w=400&h=300&fit=crop",
+  "Fish Snacks": "https://images.unsplash.com/photo-1534604973900-c43ab4c2e0ab?w=400&h=300&fit=crop",
+  "Mutton Snacks": "https://images.unsplash.com/photo-1603894584373-5ac82b2ae398?w=400&h=300&fit=crop",
+  "Non-Veg Special": "https://images.unsplash.com/photo-1625220194771-7ebdea0b70b9?w=400&h=300&fit=crop",
+  "Non-Veg Curries": "https://images.unsplash.com/photo-1585937421612-70a008356fbe?w=400&h=300&fit=crop",
+  "Non-Veg Biryanis": "https://images.unsplash.com/photo-1563379091339-03b21ab4a4f8?w=400&h=300&fit=crop",
+  "Menu Cards": "",
+}
 
 const STATS = [
   { stop: 650, label: 'HAPPY CLIENTS' },
@@ -296,9 +377,26 @@ function FloatingChatbot() {
   const [messages, setMessages] = useState([
     {
       role: "assistant",
-      content: "Namaste. I can help with Prem Nirvana Caterers menus, pricing, services, and event availability.",
+      content: "Namaste! I'm your Prem Nirvana Caterers assistant. Ask me about our menu, services, or events!",
     },
   ])
+  const messagesEndRef = useRef(null)
+
+  useEffect(() => {
+    if (open && messagesEndRef.current) {
+      messagesEndRef.current.scrollIntoView({ behavior: 'smooth' })
+    }
+  }, [messages, open])
+
+  const systemPrompt = `Keep responses SHORT — maximum 2-3 sentences. Be friendly but concise. Don't give long paragraphs. If listing menu items, use a compact list. Only elaborate if the user specifically asks for more details.
+
+You are the AI assistant for Prem Nirvana Caterers, Hyderabad. Phone: +91 99497 53542. Services: weddings, corporate events, birthdays, destination weddings. Pure veg AND non-veg available. 35+ chefs, 12+ years experience.
+
+PRICING: Always say "Please contact us on WhatsApp or call +91 99497 53542 for pricing."
+BOOKING: Share phone +91 99497 53542.
+
+FULL MENU:
+${MENU_CATEGORIES.map(cat => `${cat.name}: ${cat.items.join(', ')}`).join('\n')}`
 
   const sendMessage = async (event) => {
     event.preventDefault()
@@ -310,53 +408,75 @@ function FloatingChatbot() {
     setInput("")
     setLoading(true)
 
-    const apiKey = import.meta.env.VITE_ANTHROPIC_API_KEY
+    const apiKey = import.meta.env.VITE_GROQ_API_KEY
+    console.log("[Groq] API key present:", apiKey ? apiKey.slice(0, 10) + "..." : "MISSING")
+
     if (!apiKey) {
       setMessages([
         ...nextMessages,
         {
           role: "assistant",
-          content: "The chatbot needs VITE_ANTHROPIC_API_KEY configured before I can answer live questions.",
+          content: "The chatbot needs VITE_GROQ_API_KEY configured. Please contact us directly on WhatsApp or call +91 99497 53542.",
         },
       ])
       setLoading(false)
       return
     }
 
-    try {
-      const response = await fetch("https://api.anthropic.com/v1/messages", {
+    // Build history: take last 10, then drop any leading assistant turns
+    // (Groq requires conversation to start with a user message after system)
+    let history = nextMessages.slice(-6)
+    while (history.length > 0 && history[0].role === "assistant") {
+      history = history.slice(1)
+    }
+    const apiMessages = [
+      { role: "system", content: systemPrompt },
+      ...history.map((m) => ({ role: m.role, content: m.content })),
+    ]
+    console.log("[Groq] Sending", apiMessages.length, "messages (incl system). Roles:", apiMessages.map(m => m.role).join(", "))
+
+    const callGroq = async () => {
+      const response = await fetch("https://api.groq.com/openai/v1/chat/completions", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
-          "x-api-key": apiKey,
-          "anthropic-version": "2023-06-01",
+          "Authorization": `Bearer ${apiKey}`,
         },
         body: JSON.stringify({
-          model: "claude-sonnet-4-20250514",
-          max_tokens: 420,
-          system:
-            "You are Prem Nirvana Caterers\u0027 AI assistant. We are a premium Hyderabadi catering service specializing in multi-cuisine wedding, corporate, and event catering. Be helpful, warm, and professional.",
-          messages: nextMessages.slice(-8).map((message) => ({
-            role: message.role,
-            content: message.content,
-          })),
+          model: "llama-3.3-70b-versatile",
+          max_tokens: 250,
+          messages: apiMessages,
         }),
       })
+      if (!response.ok) {
+        const errText = await response.text()
+        console.error("[Groq] HTTP", response.status, errText)
+        throw new Error(`${response.status}: ${errText}`)
+      }
+      return response.json()
+    }
 
-      if (!response.ok) throw new Error("Anthropic API error")
-
-      const data = await response.json()
+    try {
+      let data
+      try {
+        data = await callGroq()
+      } catch (firstErr) {
+        console.warn("[Groq] First attempt failed:", firstErr.message, "— retrying in 1s")
+        await new Promise(r => setTimeout(r, 1000))
+        data = await callGroq()
+      }
+      console.log("[Groq] Response OK, choices:", data.choices?.length)
       const content =
-        data.content?.map((part) => part.text).filter(Boolean).join("\n") ||
-        "Please call us for exact menu, pricing, and date availability."
-
+        data.choices?.[0]?.message?.content ||
+        "Please contact us on WhatsApp or call +91 99497 53542 for assistance."
       setMessages([...nextMessages, { role: "assistant", content }])
     } catch (error) {
+      console.error("[Groq] Error after retry:", error)
       setMessages([
         ...nextMessages,
         {
           role: "assistant",
-          content: "I could not reach the AI service right now. For quick help, please call or WhatsApp +91 99597 30734.",
+          content: "I couldn't connect right now. Please call or WhatsApp +91 99497 53542 for immediate help.",
         },
       ])
     } finally {
@@ -365,9 +485,9 @@ function FloatingChatbot() {
   }
 
   return (
-    <div className="fixed bottom-5 left-5 z-[60]">
+    <div className="fixed bottom-5 left-2 sm:left-5 z-[60]" style={{ maxWidth: 'calc(100vw - 16px)' }}>
       {open && (
-        <div style={{ width: '380px', height: '500px' }} className="mb-3 flex flex-col overflow-hidden rounded-[16px] shadow-2xl bg-[#1a1a1a]">
+        <div className="chatbot-window mb-3 flex flex-col overflow-hidden rounded-[16px] shadow-2xl bg-[#1a1a1a]">
           {/* Header with gold gradient */}
           <div style={{ background: 'linear-gradient(135deg, #e4c590 0%, #d4a574 100%)' }} className="flex items-center justify-between px-4 py-3 shrink-0">
             <div className="flex items-center gap-3">
@@ -403,9 +523,14 @@ function FloatingChatbot() {
             ))}
             {loading && (
               <div className="mr-auto max-w-[85%] rounded-lg bg-[#2a2a2a] px-3 py-2 text-sm text-white">
-                Thinking...
+                <span style={{ display: 'inline-flex', gap: '4px', alignItems: 'center' }}>
+                  <span style={{ animation: 'dot-bounce 1.2s ease-in-out infinite', animationDelay: '0s', fontSize: '8px' }}>●</span>
+                  <span style={{ animation: 'dot-bounce 1.2s ease-in-out infinite', animationDelay: '0.2s', fontSize: '8px' }}>●</span>
+                  <span style={{ animation: 'dot-bounce 1.2s ease-in-out infinite', animationDelay: '0.4s', fontSize: '8px' }}>●</span>
+                </span>
               </div>
             )}
+            <div ref={messagesEndRef} />
           </div>
 
           {/* Input area */}
@@ -433,6 +558,10 @@ function FloatingChatbot() {
         @keyframes bounce {
           0%, 100% { transform: translateY(0); }
           50% { transform: translateY(-8px); }
+        }
+        @keyframes dot-bounce {
+          0%, 80%, 100% { transform: scale(0.6); opacity: 0.4; }
+          40% { transform: scale(1); opacity: 1; }
         }
         .chat-bounce {
           animation: bounce 1.5s cubic-bezier(0.4, 0, 0.6, 1) infinite;
@@ -557,23 +686,24 @@ function MenuModal({ open, onClose, activeMenu, setActiveMenu }) {
     <div className="fixed inset-0 flex flex-col" style={{ zIndex: 3000, height: '100vh', minHeight: '100vh', background: 'rgba(14,13,11,0.98)', animation: 'menuFadeIn 0.3s ease both' }}>
 
       {/* ── Header ── */}
-      <div className="shrink-0 border-b border-white/10" style={{ padding: '15px 40px', display: 'flex', alignItems: 'center', gap: '20px' }}>
-        {/* left: logo */}
-        <div style={{ flex: 1, display: 'flex', alignItems: 'center', justifyContent: 'flex-start', gap: '20px' }}>
-          <img src="/logo.png" alt="Prem Nirvana Caterers" className="nav-logo-image object-contain" style={{ height: '60px', width: 'auto', display: 'block' }} />
+      <div className="menu-modal-pad shrink-0 border-b border-white/10 flex items-center gap-3 sm:gap-5" style={{ paddingTop: '12px', paddingBottom: '12px' }}>
+        {/* left: logo — hidden on small phones */}
+        <div className="hidden sm:flex flex-1 items-center">
+          <img src="/logo.png" alt="Prem Nirvana Caterers" className="nav-logo-image" style={{ display: 'block' }} />
         </div>
         {/* centre: title */}
-        <div style={{ textAlign: 'center', flexShrink: 0 }}>
-          <div className="subtitle mb-2" style={{ fontSize: '22px', letterSpacing: '3px' }}>Prem Nirvana Caterers</div>
-          <h2 style={{ fontFamily: '"Forum", serif', color: '#e4c590', fontSize: '38px', fontWeight: 400, lineHeight: 1.2, margin: 0 }}>
+        <div className="flex-1 sm:flex-none text-center" style={{ flexShrink: 0 }}>
+          <div className="subtitle mb-1" style={{ fontSize: 'clamp(10px, 2.5vw, 16px)', letterSpacing: '2px' }}>Prem Nirvana Caterers</div>
+          <h2 style={{ fontFamily: '"Forum", serif', color: '#e4c590', fontSize: 'clamp(20px, 5vw, 38px)', fontWeight: 400, lineHeight: 1.2, margin: 0 }}>
             Our Full Menu
           </h2>
         </div>
         {/* right: close button */}
-        <div style={{ flex: 1, display: 'flex', alignItems: 'center', justifyContent: 'flex-end' }}>
+        <div className="flex flex-1 items-center justify-end">
           <button
             type="button" onClick={onClose} aria-label="Close menu"
-            style={{ color: '#e4c590', fontSize: '30px', lineHeight: 1, background: 'none', border: 'none', cursor: 'pointer', fontWeight: 300, opacity: 0.8, transition: 'opacity 0.2s', flexShrink: 0 }}
+            className="flex items-center justify-center w-11 h-11 min-w-[44px] min-h-[44px]"
+            style={{ color: '#e4c590', fontSize: '26px', lineHeight: 1, background: 'none', border: 'none', cursor: 'pointer', fontWeight: 300, opacity: 0.8, transition: 'opacity 0.2s' }}
             onMouseEnter={(e) => { e.currentTarget.style.opacity = '1' }}
             onMouseLeave={(e) => { e.currentTarget.style.opacity = '0.8' }}
           >✕</button>
@@ -581,7 +711,7 @@ function MenuModal({ open, onClose, activeMenu, setActiveMenu }) {
       </div>
 
       {/* ── Category tabs ── */}
-      <div className="menu-tabs-row shrink-0 flex overflow-x-auto border-b border-white/10" style={{ padding: '0 40px' }}>
+      <div className="menu-modal-pad menu-tabs-row shrink-0 flex overflow-x-auto border-b border-white/10" style={{ paddingTop: 0, paddingBottom: 0 }}>
         {MENU_CATEGORIES.map((cat) => {
           const active = activeMenu === cat.name
           return (
@@ -591,72 +721,92 @@ function MenuModal({ open, onClose, activeMenu, setActiveMenu }) {
             >{cat.name}</button>
           )
         })}
+        {/* Menu Cards special tab */}
+        <button
+          type="button" onClick={() => setActiveMenu('__menu_cards__')}
+          style={{ flexShrink: 0, padding: '16px 20px', fontSize: '11px', fontWeight: 700, letterSpacing: '0.15em', textTransform: 'uppercase', fontFamily: '"DM Sans", sans-serif', background: 'none', border: 'none', borderBottom: activeMenu === '__menu_cards__' ? '2px solid #e4c590' : '2px solid transparent', color: activeMenu === '__menu_cards__' ? '#e4c590' : 'rgba(255,255,255,0.4)', cursor: 'pointer', transition: 'color 0.2s, border-color 0.2s', whiteSpace: 'nowrap', marginBottom: '-1px' }}
+        >Menu Cards</button>
       </div>
 
-      {/* ── 4-column image grid ── */}
+      {/* ── Content area: food grid or menu cards download ── */}
       <div
-        className="menu-modal-scroll flex-1 overflow-y-auto"
-        style={{ padding: '32px 40px 0 40px' }}
+        className="menu-modal-pad menu-modal-scroll flex-1 overflow-y-auto"
+        style={{ paddingTop: '24px', paddingBottom: 0 }}
       >
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, minmax(0, 1fr))', gap: '20px' }}>
-          {activeMenuCategory.items.map((dishName, index) => {
-            const currentCategoryIndex = MENU_CATEGORIES.findIndex((c) => c.name === activeMenu)
-            const itemsBeforeThisCategory = MENU_CATEGORIES.slice(0, currentCategoryIndex).reduce((sum, cat) => sum + cat.items.length, 0)
-            const globalIndex = itemsBeforeThisCategory + index + 1
-            const checked = selected.has(dishName)
-            return (
-              <div
-                key={dishName}
-                className="menu-card"
-                onClick={() => toggleItem(dishName)}
-                style={{ cursor: 'pointer', borderRadius: '12px', border: checked ? '3px solid #e4c590' : '1px solid rgba(255,255,255,0.1)', background: checked ? 'rgba(228,197,144,0.07)' : 'rgba(255,255,255,0.02)', transition: 'border 0.2s, background 0.2s', overflow: 'hidden' }}
+        {activeMenu === '__menu_cards__' ? (
+          /* ── Menu Cards download grid ── */
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 max-w-2xl">
+            {[1, 2, 3, 4, 5].map((n) => (
+              <a
+                key={n}
+                href={`/images/client/menu-card-${n}.jpg`}
+                download={`menu-card-${n}.jpg`}
+                target="_blank"
+                rel="noreferrer"
+                style={{ display: 'block', borderRadius: '12px', border: '1px solid rgba(255,255,255,0.1)', overflow: 'hidden', transition: 'border-color 0.2s' }}
+                onMouseEnter={(e) => { e.currentTarget.style.borderColor = '#e4c590' }}
+                onMouseLeave={(e) => { e.currentTarget.style.borderColor = 'rgba(255,255,255,0.1)' }}
               >
-                {/* image + overlays */}
-                <div className="menu-card-wrap" style={{ position: 'relative', borderRadius: '10px 10px 0 0' }}>
-                  <img
-                    src={`/menu-images/${globalIndex}.jpg?t=${Date.now()}`}
-                    alt={dishName}
-                    className="menu-card-img"
-                    style={{ height: '165px', borderRadius: '10px 10px 0 0' }}
-                    loading="lazy"
-                    onError={(e) => {
-                      e.target.src = MENU_IMAGE_POOL[index % MENU_IMAGE_POOL.length]
-                    }}
-                  />
-                  {/* gold checkmark -- top-left, visible only when selected */}
-                  {checked && (
-                    <div style={{ position: 'absolute', top: '10px', left: '10px', width: '26px', height: '26px', borderRadius: '50%', background: '#e4c590', color: '#0e0d0b', fontSize: '15px', fontWeight: 700, display: 'flex', alignItems: 'center', justifyContent: 'center', boxShadow: '0 2px 6px rgba(0,0,0,0.4)' }}>
-                      ✓
-                    </div>
-                  )}
-                  {/* number badge -- top-right */}
-                  <div style={{ position: 'absolute', top: '10px', right: '10px', width: '24px', height: '24px', borderRadius: '50%', background: '#e4c590', color: '#0e0d0b', fontSize: '10px', fontWeight: 700, fontFamily: '"DM Sans", sans-serif', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                    {globalIndex}
+                <img
+                  src={`/images/client/menu-card-${n}.jpg`}
+                  alt={`Menu Card ${n}`}
+                  style={{ width: '100%', height: '320px', objectFit: 'contain', display: 'block', background: '#111' }}
+                />
+              </a>
+            ))}
+          </div>
+        ) : (
+          /* ── Regular food grid ── */
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3 md:gap-5">
+            {activeMenuCategory.items.map((dishName, index) => {
+              const checked = selected.has(dishName)
+              return (
+                <div
+                  key={dishName}
+                  className="menu-card"
+                  onClick={() => toggleItem(dishName)}
+                  style={{ cursor: 'pointer', borderRadius: '12px', border: checked ? '3px solid #e4c590' : '1px solid rgba(255,255,255,0.1)', background: checked ? 'rgba(228,197,144,0.07)' : 'rgba(255,255,255,0.02)', transition: 'border 0.2s, background 0.2s', overflow: 'hidden' }}
+                >
+                  {/* image + overlays */}
+                  <div className="menu-card-wrap" style={{ position: 'relative', borderRadius: '10px 10px 0 0' }}>
+                    <img
+                      src={CATEGORY_IMAGES[activeMenu] || MENU_IMAGE_POOL[index % MENU_IMAGE_POOL.length]}
+                      alt={dishName}
+                      className="menu-card-img"
+                      style={{ height: '165px', borderRadius: '10px 10px 0 0' }}
+                      loading="lazy"
+                    />
+                    {/* gold checkmark -- top-left, visible only when selected */}
+                    {checked && (
+                      <div style={{ position: 'absolute', top: '10px', left: '10px', width: '26px', height: '26px', borderRadius: '50%', background: '#e4c590', color: '#0e0d0b', fontSize: '15px', fontWeight: 700, display: 'flex', alignItems: 'center', justifyContent: 'center', boxShadow: '0 2px 6px rgba(0,0,0,0.4)' }}>
+                        ✓
+                      </div>
+                    )}
+                  </div>
+                  {/* name */}
+                  <div style={{ padding: '12px 14px 14px' }}>
+                    <h3 style={{ fontFamily: '"Forum", serif', color: checked ? '#e4c590' : 'rgba(255,255,255,0.88)', fontSize: '1.125rem', fontWeight: 700, lineHeight: 1.3, margin: 0, transition: 'color 0.2s' }}>
+                      {dishName}
+                    </h3>
                   </div>
                 </div>
-                {/* name */}
-                <div style={{ padding: '12px 14px 14px' }}>
-                  <h3 style={{ fontFamily: '"Forum", serif', color: checked ? '#e4c590' : 'rgba(255,255,255,0.88)', fontSize: '1rem', fontWeight: 400, lineHeight: 1.3, margin: 0, transition: 'color 0.2s' }}>
-                    {dishName}
-                  </h3>
-                </div>
-              </div>
-            )
-          })}
-        </div>
+              )
+            })}
+          </div>
+        )}
       </div>
 
       {/* ── Sticky WhatsApp bar ── */}
       {selected.size > 0 && (
-        <div style={{ position: 'sticky', bottom: 0, top: 'auto', zIndex: 10, background: '#e4c590', padding: '14px 40px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '16px', marginTop: 'auto' }}>
+        <div className="menu-modal-pad menu-sticky-bar shrink-0" style={{ position: 'sticky', bottom: 0, zIndex: 10, background: '#e4c590', paddingTop: '12px', paddingBottom: '12px' }}>
           <span style={{ fontFamily: '"DM Sans", sans-serif', fontWeight: 700, color: '#0e0d0b', fontSize: '14px' }}>
             {selected.size} item{selected.size !== 1 ? 's' : ''} selected
           </span>
           <button
             type="button" onClick={() => setShowForm(true)}
-            style={{ background: '#0e0d0b', color: '#e4c590', border: 'none', padding: '11px 26px', fontFamily: '"DM Sans", sans-serif', fontWeight: 700, fontSize: '13px', letterSpacing: '0.1em', textTransform: 'uppercase', cursor: 'pointer', borderRadius: '4px', whiteSpace: 'nowrap' }}
+            style={{ background: '#0e0d0b', color: '#e4c590', border: 'none', padding: '13px 20px', fontFamily: '"DM Sans", sans-serif', fontWeight: 700, fontSize: '13px', letterSpacing: '0.1em', textTransform: 'uppercase', cursor: 'pointer', borderRadius: '4px', minHeight: '44px' }}
           >
-            📲 Send Order via WhatsApp ({selected.size} items)
+            📲 Send via WhatsApp ({selected.size} items)
           </button>
         </div>
       )}
@@ -1002,9 +1152,11 @@ export default function App() {
   const [statsRun, setStatsRun] = useState(false)
   const [mobileOpen, setMobileOpen] = useState(false)
   const [selectedGallery, setSelectedGallery] = useState(null)
+  const [activeLabelIndex, setActiveLabelIndex] = useState(null)
   const [showBackTop, setShowBackTop] = useState(false)
   const [currentPath, setCurrentPath] = useState(window.location.pathname)
   const statsRef = useRef(null)
+  const specialtiesRef = useRef(null)
 
   // Listen for route changes
   useEffect(() => {
@@ -1069,6 +1221,28 @@ export default function App() {
     return () => clearInterval(interval)
   }, [])
 
+  // auto-slide specialties carousel every 2.5 seconds, loops back to start
+  useEffect(() => {
+    const el = specialtiesRef.current
+    if (!el) return
+    const interval = setInterval(() => {
+      const atEnd = el.scrollLeft + el.clientWidth >= el.scrollWidth - 4
+      if (atEnd) {
+        el.scrollTo({ left: 0, behavior: 'smooth' })
+      } else {
+        el.scrollBy({ left: 260, behavior: 'smooth' })
+      }
+    }, 2500)
+    const pause = () => clearInterval(interval)
+    el.addEventListener('mouseenter', pause)
+    el.addEventListener('touchstart', pause, { passive: true })
+    return () => {
+      clearInterval(interval)
+      el.removeEventListener('mouseenter', pause)
+      el.removeEventListener('touchstart', pause)
+    }
+  }, [])
+
   // Simple routing for /admin page
   const isAdminPath = currentPath.includes('/admin') || window.location.pathname.includes('/admin')
 
@@ -1097,7 +1271,7 @@ export default function App() {
             <img
               src="/logo.png"
               alt="Prem Nirvana Caterers"
-              className="nav-logo-image object-contain" style={{height:"200px",width:"auto"}}
+              className="nav-logo-image object-contain"
               style={{ background: 'transparent', border: 'none', boxShadow: 'none' }}
             />
           </a>
@@ -1121,27 +1295,43 @@ export default function App() {
           </button>
 
           <button
-            className="lg:hidden text-gold text-2xl"
+            className="lg:hidden text-gold text-3xl flex items-center justify-center w-11 h-11"
             onClick={() => setMobileOpen((o) => !o)}
-            aria-label="Menu"
+            aria-label="Toggle navigation menu"
           >
-            ☰
+            {mobileOpen ? '✕' : '☰'}
           </button>
         </div>
 
         {mobileOpen && (
-          <div className="lg:hidden bg-ink-deep border-t border-white/10 px-5 py-4 flex flex-col gap-3">
+          <div className="lg:hidden bg-ink-deep border-t border-white/10 px-5 py-3 flex flex-col">
             {NAV.map(([label, href]) =>
               href ? (
-                <a key={label} href={href} onClick={() => setMobileOpen(false)} className="text-sm uppercase tracking-wider text-white/85 hover:text-gold">
+                <a
+                  key={label}
+                  href={href}
+                  onClick={() => setMobileOpen(false)}
+                  className="py-3 text-sm uppercase tracking-wider text-white/85 hover:text-gold border-b border-white/5 min-h-[44px] flex items-center"
+                >
                   {label}
                 </a>
               ) : (
-                <button key={label} type="button" onClick={() => { setMobileOpen(false); setMenuOpen(true) }} className="text-left text-sm uppercase tracking-wider text-white/85 hover:text-gold">
+                <button
+                  key={label}
+                  type="button"
+                  onClick={() => { setMobileOpen(false); setMenuOpen(true) }}
+                  className="text-left py-3 text-sm uppercase tracking-wider text-white/85 hover:text-gold border-b border-white/5 min-h-[44px] flex items-center"
+                >
                   {label}
                 </button>
               )
             )}
+            <button
+              onClick={() => { setMobileOpen(false); document.getElementById('forms').scrollIntoView({behavior:'smooth'}) }}
+              className="mt-4 mb-2 theme-btn text-center w-full"
+            >
+              Book Now
+            </button>
           </div>
         )}
       </header>
@@ -1163,10 +1353,10 @@ export default function App() {
               <div className="text-gold tracking-widest text-sm uppercase animate-fade-in-up">
                 PREM NIRVANA CATERERS
               </div>
-              <h1 className="text-5xl md:text-6xl font-bold text-white text-center mb-4 animate-fade-in-up">
+              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white text-center mb-4 animate-fade-in-up">
                 From Our Kitchen to Your Celebration
               </h1>
-              <p className="text-white/80 text-lg text-center mb-8 animate-fade-in-up">
+              <p className="text-white/80 text-base md:text-lg text-center mb-8 animate-fade-in-up">
                 Experience the warmth of homestyle cooking at every event.
               </p>
               <button className="theme-btn animate-fade-in-up" onClick={() => setMenuOpen(true)}>View Our Menu</button>
@@ -1176,13 +1366,13 @@ export default function App() {
       </section>
 
       {/* ===== Every Dish Tells Our Story ===== */}
-      <section id="about" className="relative py-24 bg-ink overflow-hidden">
-        <div className="max-w-container mx-auto px-5 grid lg:grid-cols-2 gap-14 items-center">
+      <section id="about" className="relative py-16 md:py-24 bg-ink overflow-hidden">
+        <div className="max-w-container mx-auto px-5 grid lg:grid-cols-2 gap-8 lg:gap-14 items-center">
           <div className="relative">
             <img
               src={`${IMG}/images/resource/restaurant-11.jpg`}
               alt="Prem Nirvana Caterers"
-              className="w-full h-[480px] object-cover"
+              className="w-full h-[240px] sm:h-[320px] md:h-[400px] lg:h-[480px] object-cover"
             />
           </div>
           <div>
@@ -1209,21 +1399,46 @@ export default function App() {
       </section>
 
       {/* ===== Best Specialties ===== */}
-      <section id="specialties" className="py-24 bg-ink-deep">
+      <section id="specialties" className="py-16 md:py-24 bg-ink-deep">
         <div className="max-w-container mx-auto px-5">
-          <SectionTitle sub="Our Best Cusine" title="Best Specialties" centered />
-          <div className="mt-12 flex gap-6 overflow-x-auto pb-6 snap-x"
-               style={{ scrollbarWidth: 'thin' }}>
+          {/* Header row: centered title, arrows pinned to right */}
+          <div className="relative flex items-center justify-center mb-10">
+            <div className="text-center">
+              <SectionTitle sub="Our Best Cusine" title="Best Specialties" centered />
+            </div>
+            <div className="absolute right-0 flex gap-2">
+              <button
+                type="button"
+                aria-label="Previous"
+                onClick={() => specialtiesRef.current?.scrollBy({ left: -260, behavior: 'smooth' })}
+                className="w-11 h-11 flex items-center justify-center rounded-full border border-gold text-gold text-2xl leading-none hover:bg-gold hover:text-ink-deep transition-colors"
+              >‹</button>
+              <button
+                type="button"
+                aria-label="Next"
+                onClick={() => specialtiesRef.current?.scrollBy({ left: 260, behavior: 'smooth' })}
+                className="w-11 h-11 flex items-center justify-center rounded-full border border-gold text-gold text-2xl leading-none hover:bg-gold hover:text-ink-deep transition-colors"
+              >›</button>
+            </div>
+          </div>
+
+          {/* Carousel track — native scroll + snap on both mobile and desktop */}
+          <div
+            ref={specialtiesRef}
+            className="flex gap-4 md:gap-5 overflow-x-auto pb-4 snap-x snap-mandatory"
+            style={{ scrollbarWidth: 'none', msOverflowStyle: 'none', WebkitOverflowScrolling: 'touch' }}
+          >
             {SPECIALTIES.map((s) => (
-              <div key={s.name} className="snap-start shrink-0 w-[260px] group">
+              <div key={s.name} className="snap-start shrink-0 w-[45vw] sm:w-[200px] md:w-[230px] group">
                 <div className="overflow-hidden">
                   <img
                     src={s.img}
                     alt={s.name}
-                    className="w-full h-[320px] object-cover transition-transform duration-700 group-hover:scale-110"
+                    className="w-full h-[180px] sm:h-[240px] md:h-[300px] object-cover transition-transform duration-700 group-hover:scale-110"
+                    loading="lazy"
                   />
                 </div>
-                <h4 className="mt-4 text-2xl text-center text-white group-hover:text-gold transition-colors">
+                <h4 className="mt-3 text-base md:text-xl text-center text-white group-hover:text-gold transition-colors">
                   {s.name}
                 </h4>
               </div>
@@ -1233,18 +1448,18 @@ export default function App() {
       </section>
 
       {/* ===== We Offer Top Notch ===== */}
-      <section id="offer" className="relative py-24 bg-ink">
+      <section id="offer" className="relative py-16 md:py-24 bg-ink">
         <div className="max-w-container mx-auto px-5">
           <SectionTitle sub="Flavors for royalty" title="We Offer Top Notch" centered />
-          <p className="mt-5 text-center text-muted max-w-2xl mx-auto">
+          <p className="mt-5 text-center text-muted max-w-2xl mx-auto text-sm md:text-base">
             Our menu is crafted with passion and precision, showcasing a diverse array of dishes prepared with the
             finest ingredients sourced locally and globally.
           </p>
-          <div className="mt-14 grid md:grid-cols-3 gap-7">
+          <div className="mt-10 md:mt-14 grid md:grid-cols-3 gap-5 md:gap-7">
             {OFFERS.map((o) => {
               const categoryMap = {
-                'Cocktails': 'Salads & Drinks',
-                'Cusine': 'Veg Curries & Dal',
+                'Cocktails': 'Drinks & Juices',
+                'Cusine': 'Veg Currys',
                 'Live stations': 'Live Counters',
               }
               const targetCategory = categoryMap[o.name] || MENU_CATEGORIES[0].name
@@ -1253,7 +1468,8 @@ export default function App() {
                   <img
                     src={o.img}
                     alt={o.name}
-                    className="w-full h-[420px] object-cover transition-transform duration-700 group-hover:scale-110"
+                    className="w-full h-[240px] sm:h-[300px] md:h-[420px] object-cover transition-transform duration-700 group-hover:scale-110"
+                    loading="lazy"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
                   <div className="absolute inset-x-0 bottom-0 p-7 text-center">
@@ -1283,22 +1499,23 @@ export default function App() {
       {/* ===== Video + Stats ===== */}
       <section
         ref={statsRef}
-        className="relative py-28 bg-cover bg-center bg-fixed"
+        className="relative py-16 md:py-28 bg-cover bg-center bg-fixed"
         style={{ backgroundImage: `url(${IMG}/images/background/slider3.jpg)` }}
       >
         <div className="absolute inset-0 bg-ink-deep/85" />
         <div className="relative z-10 max-w-container mx-auto px-5">
-          <div className="flex justify-center mb-20">
+          <div className="flex justify-center mb-12 md:mb-20">
             <a
               href={`${IMG}/images/video.mp4`}
               target="_blank"
               rel="noreferrer"
-              className="relative flex items-center justify-center w-24 h-36 rounded-full bg-gold text-ink-deep text-3xl ripple-ring"
+              className="relative flex items-center justify-center w-16 h-16 md:w-24 md:h-24 rounded-full bg-gold text-ink-deep text-2xl md:text-3xl ripple-ring"
+              aria-label="Watch video"
             >
               ▶
             </a>
           </div>
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-10">
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-10">
             {STATS.map((s) => (
               <StatBlock key={s.label} stat={s} run={statsRun} />
             ))}
@@ -1307,14 +1524,14 @@ export default function App() {
       </section>
 
       {/* ===== Tabbed Section ===== */}
-      <section id="tabs" className="py-24 bg-ink">
+      <section id="tabs" className="py-16 md:py-24 bg-ink">
         <div className="max-w-container mx-auto px-5">
-          <div className="flex flex-wrap justify-center gap-3 mb-14">
+          <div className="flex flex-wrap justify-center gap-2 md:gap-3 mb-10 md:mb-14">
             {TABS.map((t) => (
               <button
                 key={t.id}
                 onClick={() => setActiveTab(t.id)}
-                className={`px-7 py-3 text-[13px] font-bold uppercase tracking-widest border transition-all ${
+                className={`px-4 md:px-7 py-3.5 text-[11px] md:text-[13px] font-bold uppercase tracking-widest border transition-all min-h-[44px] ${
                   activeTab === t.id
                     ? 'bg-gold text-ink-deep border-gold'
                     : 'bg-transparent text-white/70 border-white/20 hover:border-gold hover:text-gold'
@@ -1325,12 +1542,13 @@ export default function App() {
             ))}
           </div>
 
-          <div className="grid lg:grid-cols-2 gap-14 items-center">
+          <div className="grid lg:grid-cols-2 gap-8 lg:gap-14 items-center">
             <div className={tab.imageRight ? 'lg:order-2' : ''}>
               <img
                 src={tab.img}
                 alt={tab.h}
-                className="w-full h-[460px] object-cover"
+                className="w-full h-[220px] sm:h-[320px] md:h-[380px] lg:h-[460px] object-cover"
+                loading="lazy"
               />
             </div>
             <div className={tab.imageRight ? 'lg:order-1' : ''}>
@@ -1359,25 +1577,25 @@ export default function App() {
 
       {/* ===== Testimonials ===== */}
       <section
-        className="relative py-28 bg-cover bg-center"
+        className="relative py-16 md:py-28 bg-cover bg-center"
         style={{ backgroundImage: `url(${IMG}/images/resource/bg-1.jpg)` }}
       >
         <div className="absolute inset-0 bg-ink-deep/90" />
         <div className="relative z-10 max-w-container mx-auto px-5">
           <SectionTitle sub="testimonials" title="What People Are Saying" centered />
 
-          <div className="mt-14 max-w-3xl mx-auto text-center">
+          <div className="mt-10 md:mt-14 max-w-3xl mx-auto text-center">
             <img
               src={`${IMG}/images/icons/quotes-1.png`}
               alt="quote"
-              className="h-12 mx-auto mb-6 opacity-90"
+              className="h-10 md:h-12 mx-auto mb-6 opacity-90"
             />
-            <div className="flex justify-center gap-1 text-gold mb-6">
+            <div className="flex justify-center gap-1 text-gold mb-6 text-lg">
               {'★★★★★'.split('').map((s, i) => (
                 <span key={i}>{s}</span>
               ))}
             </div>
-            <p className="text-white/85 text-lg leading-relaxed min-h-[180px]">
+            <p className="text-white/85 text-base md:text-lg leading-relaxed min-h-[120px] md:min-h-[180px]">
               {TESTIMONIALS[testi].text}
             </p>
             <div className="mt-8 flex flex-col items-center">
@@ -1386,19 +1604,19 @@ export default function App() {
                 alt={TESTIMONIALS[testi].name}
                 className="w-16 h-16 rounded-full object-cover border-2 border-gold mb-3"
               />
-              <div className="text-2xl text-gold">{TESTIMONIALS[testi].name}</div>
+              <div className="text-xl md:text-2xl text-gold">{TESTIMONIALS[testi].name}</div>
             </div>
 
-            <div className="mt-8 flex justify-center gap-3">
+            <div className="mt-8 flex justify-center gap-1">
               {TESTIMONIALS.map((_, i) => (
                 <button
                   key={i}
                   onClick={() => setTesti(i)}
-                  className={`h-2.5 rounded-full transition-all ${
-                    i === testi ? 'w-8 bg-gold' : 'w-2.5 bg-white/30'
-                  }`}
+                  className={`p-3 -m-1 flex items-center justify-center`}
                   aria-label={`Testimonial ${i + 1}`}
-                />
+                >
+                  <span className={`block rounded-full transition-all ${i === testi ? 'w-8 h-2.5 bg-gold' : 'w-2.5 h-2.5 bg-white/30'}`} />
+                </button>
               ))}
             </div>
           </div>
@@ -1407,10 +1625,10 @@ export default function App() {
 
 
       {/* ===== Event Gallery ===== */}
-      <section id="events" className="py-24 bg-ink-deep">
+      <section id="events" className="py-16 md:py-24 bg-ink-deep">
         <div className="max-w-container mx-auto px-5">
           <SectionTitle sub="Event Gallery" title="Celebrations We Cater" centered />
-          <div className="mt-12 grid grid-cols-1 md:grid-cols-3 auto-rows-[180px] gap-4">
+          <div className="mt-10 grid grid-cols-2 md:grid-cols-3 auto-rows-[140px] md:auto-rows-[180px] gap-3 md:gap-4">
             {GALLERY_IMAGES.map((image, index) => {
               const labels = [
                 'Wedding Catering',
@@ -1424,11 +1642,24 @@ export default function App() {
                 'Live Music & Dining',
               ]
               const label = labels[index] || ''
+              const labelActive = activeLabelIndex === index
               return (
                 <button
                   key={image.src}
                   type="button"
-                  onClick={() => setSelectedGallery(index)}
+                  onClick={() => {
+                    // Desktop: open immediately. Mobile: first tap shows label, second tap opens lightbox.
+                    if (window.matchMedia('(hover: none)').matches) {
+                      if (activeLabelIndex === index) {
+                        setActiveLabelIndex(null)
+                        setSelectedGallery(index)
+                      } else {
+                        setActiveLabelIndex(index)
+                      }
+                    } else {
+                      setSelectedGallery(index)
+                    }
+                  }}
                   className={['group relative overflow-hidden rounded-lg border border-white/10', index % 4 === 0 ? 'md:row-span-2' : ''].join(' ')}
                 >
                   <img
@@ -1438,9 +1669,11 @@ export default function App() {
                     loading="lazy"
                   />
                   <span className="absolute inset-0 bg-transparent/10 transition-colors group-hover:bg-transparent/30" />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
-                  <div className="absolute bottom-0 inset-x-0 p-4 text-gold font-bold text-sm opacity-0 group-hover:opacity-100 transition-opacity">
+                  {/* Gradient + label: always visible on mobile when tapped, hover-only on desktop */}
+                  <div className={`absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent transition-opacity duration-300 ${labelActive ? 'opacity-100' : 'opacity-0 group-hover:opacity-100'}`} />
+                  <div className={`absolute bottom-0 inset-x-0 p-3 md:p-4 text-gold font-bold text-xs md:text-sm transition-opacity duration-300 ${labelActive ? 'opacity-100' : 'opacity-0 group-hover:opacity-100'}`}>
                     {label}
+                    {labelActive && <span className="block text-white/60 text-[10px] font-normal mt-0.5">Tap again to open</span>}
                   </div>
                 </button>
               )
@@ -1452,15 +1685,15 @@ export default function App() {
       {/* ===== Reserve / Contact Form ===== */}
       <section
         id="forms"
-        className="relative py-24 bg-cover bg-center"
+        className="relative py-16 md:py-24 bg-cover bg-center"
         style={{ backgroundImage: `url(${IMG}/images/background/raj.jpg)` }}
       >
         <div className="absolute inset-0 bg-ink-deep/90" />
         <div className="relative z-10 max-w-container mx-auto px-5">
           <div className="grid lg:grid-cols-3 gap-0 shadow-2xl">
             {/* form */}
-            <div className="lg:col-span-2 bg-ink-deep/80 p-10 md:p-14 border border-white/10">
-              <h2 className="text-4xl md:text-5xl text-white mb-2">WHAT ARE YOU WAITING FOR ?</h2>
+            <div className="lg:col-span-2 bg-ink-deep/80 p-6 sm:p-10 md:p-14 border border-white/10">
+              <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-white mb-2 leading-tight">WHAT ARE YOU WAITING FOR ?</h2>
               <p className="text-muted mb-8">
                 Booking request{' '}
                 <a href="tel:+917780797066" className="text-gold">
@@ -1484,7 +1717,7 @@ export default function App() {
                 <div className="hidden md:block" />
                 <textarea className="ftinput md:col-span-2" rows="4" placeholder="Message" required />
                 <div className="md:col-span-2">
-                  <button type="submit" className="theme-btn">Enquiry Now</button>
+                  <button type="submit" className="theme-btn w-full sm:w-auto">Enquiry Now</button>
                 </div>
               </form>
             </div>
@@ -1498,7 +1731,7 @@ export default function App() {
               <div className="relative z-10 text-center">
                 <div className="subtitle mb-2">We Are</div>
                 <h5 className="text-3xl text-white mb-6">Premium Hyderabadi Catering</h5>
-                <img src="/logo.png" alt="Prem Nirvana Caterers" className="mx-auto mb-6 h-36 w-auto object-contain" />
+                <img src="/logo.png" alt="Prem Nirvana Caterers" className="mx-auto mb-6 h-24 md:h-36 w-auto object-contain" />
                 <p className="text-white/85 leading-relaxed mb-6">
                   Call: +91 7780797066
                   <br />
@@ -1515,10 +1748,10 @@ export default function App() {
 
 
       {/* ===== Instagram ===== */}
-      <section id="instagram" className="py-20 bg-ink">
+      <section id="instagram" className="py-12 md:py-20 bg-ink">
         <div className="max-w-container mx-auto px-5">
           <SectionTitle sub="Instagram" title="Follow Us on Instagram" centered />
-          <div className="mt-10 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3">
+          <div className="mt-8 grid grid-cols-3 md:grid-cols-3 lg:grid-cols-6 gap-2 md:gap-3">
             {INSTAGRAM_IMAGES.map((image) => (
               <a
                 key={image.src}
@@ -1541,14 +1774,14 @@ export default function App() {
 
       {/* ===== Footer ===== */}
       <footer
-        className="relative pt-20 pb-8 bg-cover bg-bottom"
+        className="relative pt-12 md:pt-20 pb-8 bg-cover bg-bottom"
         style={{ backgroundImage: `url(${IMG}/images/background/bg-14.png)` }}
       >
         <div className="absolute inset-0 bg-ink-deep/95" />
         <div className="relative z-10 max-w-container mx-auto px-5">
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-10 pb-14 border-b border-gold/30">
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 md:gap-10 pb-10 md:pb-14 border-b border-gold/30">
             <div>
-              <img src="/logo.png" alt="Prem Nirvana Caterers" className="h-36 w-auto object-contain" />
+              <img src="/logo.png" alt="Prem Nirvana Caterers" className="h-24 md:h-36 w-auto object-contain" />
             </div>
 
             <div>
@@ -1674,7 +1907,7 @@ export default function App() {
       </footer>
 
       <a
-        href="https://wa.me/917780797066"
+        href="https://wa.me/919949753542?text=Hi!%20I'm%20interested%20in%20Prem%20Nirvana%20Caterers%20services.%20Can%20you%20share%20more%20details?"
         target="_blank"
         rel="noreferrer"
         className="contact-float whatsapp-float fixed bottom-[88px] right-5 z-[60] flex h-[60px] w-[60px] items-center justify-center rounded-full bg-[#25D366] text-white shadow-2xl transition-transform hover:scale-105"
@@ -1686,7 +1919,7 @@ export default function App() {
       </a>
 
       <a
-        href="tel:+917780797066"
+        href="tel:+919949753542"
         className="contact-float call-float fixed bottom-5 right-5 z-[60] flex h-[60px] w-[60px] items-center justify-center rounded-full bg-[#1d74d8] text-white shadow-2xl transition-transform hover:scale-105"
         aria-label="Call Prem Nirvana Caterers"
       >
