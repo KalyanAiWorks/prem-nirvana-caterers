@@ -381,12 +381,41 @@ function FloatingChatbot() {
     },
   ])
   const messagesEndRef = useRef(null)
+  const [viewportStyle, setViewportStyle] = useState({})
 
   useEffect(() => {
     if (open && messagesEndRef.current) {
       messagesEndRef.current.scrollIntoView({ behavior: 'smooth' })
     }
   }, [messages, open])
+
+  // Adjust popup position/height when mobile keyboard opens
+  useEffect(() => {
+    if (!open || typeof window === 'undefined') {
+      setViewportStyle({})
+      return
+    }
+    const vv = window.visualViewport
+    if (!vv) return
+
+    const update = () => {
+      if (window.innerWidth >= 640) return // desktop: CSS handles it
+      // keyboardHeight ≈ how much the visual viewport has shrunk
+      const keyboardHeight = Math.max(0, window.innerHeight - vv.height - vv.offsetTop)
+      const bottom = keyboardHeight > 50 ? keyboardHeight + 8 : 70
+      const height = Math.min(Math.round(vv.height * 0.82), 600)
+      setViewportStyle({ bottom: bottom + 'px', height: height + 'px', maxHeight: height + 'px' })
+    }
+
+    vv.addEventListener('resize', update)
+    vv.addEventListener('scroll', update)
+    update()
+    return () => {
+      vv.removeEventListener('resize', update)
+      vv.removeEventListener('scroll', update)
+    }
+  }, [open])
+
 
   const systemPrompt = `Keep responses SHORT — maximum 2-3 sentences. Be friendly but concise. Don't give long paragraphs. If listing menu items, use a compact list. Only elaborate if the user specifically asks for more details.
 
@@ -485,14 +514,14 @@ ${MENU_CATEGORIES.map(cat => `${cat.name}: ${cat.items.join(', ')}`).join('\n')}
     <>
       {/* ── Chatbot popup ── */}
       {open && (
-        <div className="chatbot-popup">
+        <div className="chatbot-popup" style={viewportStyle}>
           {/* Header */}
           <div className="chatbot-header">
-            <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
-              <img src="/logo.png" alt="Prem Nirvana" style={{ height: '32px', width: 'auto' }} />
-              <div>
-                <div style={{ fontSize: '14px', fontWeight: 700, color: '#1a1a1a', fontFamily: '"DM Sans", sans-serif', letterSpacing: '0.05em' }}>PREM NIRVANA AI</div>
-                <div style={{ fontSize: '11px', color: '#444', fontFamily: '"DM Sans", sans-serif' }}>Ask about menus, pricing & events</div>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '10px', minWidth: 0 }}>
+              <img src="/logo.png" alt="Prem Nirvana" style={{ height: '30px', width: 'auto', flexShrink: 0 }} />
+              <div style={{ minWidth: 0 }}>
+                <div className="chatbot-title-main">PREM NIRVANA AI</div>
+                <div className="chatbot-title-sub">Ask about menus, pricing &amp; events</div>
               </div>
             </div>
             <button
@@ -546,85 +575,110 @@ ${MENU_CATEGORIES.map(cat => `${cat.name}: ${cat.items.join(', ')}`).join('\n')}
 
       {/* ── Styles ── */}
       <style>{`
-        /* === Popup container === */
+        /* ============================================================
+           MOBILE — compact chat bubble popup (320px–639px)
+        ============================================================ */
         .chatbot-popup {
           position: fixed;
-          inset: 0;
-          z-index: 200;
+          bottom: 70px;
+          left: 50%;
+          transform: translateX(-50%);
+          width: 92vw;
+          height: 75vh;
+          max-height: 600px;
+          z-index: 9999;
           display: flex;
           flex-direction: column;
-          background: #1a1a1a;
-          animation: chatbot-open 0.22s ease both;
+          overflow: hidden;
+          background: #141414;
+          border-radius: 16px;
+          box-shadow: 0 8px 32px rgba(0,0,0,0.55), 0 0 0 1px rgba(228,197,144,0.18);
+          animation: chatbot-slide-up 0.24s cubic-bezier(0.32, 0.72, 0, 1) both;
         }
-        @media (min-width: 640px) {
-          .chatbot-popup {
-            inset: auto;
-            bottom: 80px;
-            right: 20px;
-            width: 400px;
-            height: 560px;
-            border-radius: 16px;
-            box-shadow: 0 24px 64px rgba(0,0,0,0.6), 0 0 0 1px rgba(228,197,144,0.15);
-            overflow: hidden;
-          }
-        }
-        @keyframes chatbot-open {
-          from { opacity: 0; transform: scale(0.96) translateY(12px); }
-          to   { opacity: 1; transform: scale(1)    translateY(0); }
+        @keyframes chatbot-slide-up {
+          from { opacity: 0; transform: translateX(-50%) translateY(16px) scale(0.97); }
+          to   { opacity: 1; transform: translateX(-50%) translateY(0)     scale(1);   }
         }
 
-        /* === Header === */
+        /* --- Mobile header: dark, compact, 50px --- */
         .chatbot-header {
           display: flex;
           align-items: center;
           justify-content: space-between;
-          padding: 14px 16px;
+          padding: 0 14px;
+          height: 50px;
+          min-height: 50px;
           flex-shrink: 0;
-          background: linear-gradient(135deg, #e4c590 0%, #d4a574 100%);
+          background: #0e0d0b;
+          border-bottom: 1px solid rgba(228,197,144,0.25);
+        }
+        .chatbot-title-main {
+          font-size: 13px;
+          font-weight: 700;
+          color: #e4c590;
+          font-family: "DM Sans", sans-serif;
+          letter-spacing: 0.06em;
+          white-space: nowrap;
+          overflow: hidden;
+          text-overflow: ellipsis;
+        }
+        .chatbot-title-sub {
+          font-size: 10px;
+          color: #777;
+          font-family: "DM Sans", sans-serif;
+          white-space: nowrap;
+          overflow: hidden;
+          text-overflow: ellipsis;
         }
         .chatbot-close-btn {
-          width: 36px;
-          height: 36px;
-          min-width: 36px;
+          flex-shrink: 0;
+          width: 40px;
+          height: 40px;
+          min-width: 40px;
           display: flex;
           align-items: center;
           justify-content: center;
-          background: rgba(0,0,0,0.15);
-          border: none;
+          background: rgba(228,197,144,0.12);
+          border: 1px solid rgba(228,197,144,0.3);
           border-radius: 50%;
-          font-size: 15px;
-          color: #1a1a1a;
+          font-size: 16px;
+          color: #e4c590;
           cursor: pointer;
           font-weight: 700;
           line-height: 1;
           transition: background 0.15s;
         }
-        .chatbot-close-btn:hover { background: rgba(0,0,0,0.28); }
+        .chatbot-close-btn:hover  { background: rgba(228,197,144,0.22); }
+        .chatbot-close-btn:active { background: rgba(228,197,144,0.32); }
 
-        /* === Messages === */
+        /* --- Mobile messages area --- */
         .chatbot-messages {
           flex: 1;
+          min-height: 0;      /* CRITICAL: prevents flex child from overflowing parent */
           overflow-y: auto;
-          padding: 16px;
+          overflow-x: hidden;
+          padding: 12px 12px 8px;
           display: flex;
           flex-direction: column;
-          gap: 12px;
+          gap: 8px;
           background: #141414;
           -webkit-overflow-scrolling: touch;
+          overscroll-behavior: contain;
         }
         .chatbot-bubble {
-          max-width: 82%;
+          max-width: 80%;
           padding: 10px 14px;
-          font-size: 15px;
-          line-height: 1.55;
+          font-size: 14px;
+          line-height: 1.5;
           font-family: "DM Sans", sans-serif;
           word-break: break-word;
           white-space: pre-wrap;
+          border-radius: 16px;
         }
         .chatbot-bubble-bot {
           align-self: flex-start;
-          background: #2c2c2c;
-          color: #efefef;
+          background: #2a2a2a;
+          color: #f0f0f0;
           border-radius: 4px 16px 16px 16px;
         }
         .chatbot-bubble-user {
@@ -635,7 +689,7 @@ ${MENU_CATEGORIES.map(cat => `${cat.name}: ${cat.items.join(', ')}`).join('\n')}
           border-radius: 16px 4px 16px 16px;
         }
 
-        /* === Loading dots === */
+        /* --- Loading dots --- */
         .chatbot-dots {
           display: inline-flex;
           gap: 5px;
@@ -654,25 +708,28 @@ ${MENU_CATEGORIES.map(cat => `${cat.name}: ${cat.items.join(', ')}`).join('\n')}
           40%           { transform: scale(1);   opacity: 1;   }
         }
 
-        /* === Input area === */
+        /* --- Mobile input area: always visible at bottom --- */
         .chatbot-input-area {
           display: flex;
           align-items: center;
-          gap: 10px;
-          padding: 12px 16px;
-          background: #1a1a1a;
-          border-top: 1px solid #2e2e2e;
+          gap: 8px;
+          padding: 0 10px;
+          height: 50px;
+          min-height: 50px;
           flex-shrink: 0;
+          box-sizing: border-box;
+          background: #0e0d0b;
+          border-top: 1px solid #2a2a2a;
         }
         .chatbot-input {
           flex: 1;
-          min-height: 44px;
-          padding: 10px 14px;
-          border-radius: 10px;
-          border: 2px solid #e4c590;
-          background: #0d0d0d;
+          height: 40px;
+          padding: 0 14px;
+          border-radius: 20px;
+          border: 1.5px solid #e4c590;
+          background: #1a1a1a;
           color: #fff;
-          font-size: 15px;
+          font-size: 14px;
           font-family: "DM Sans", sans-serif;
           outline: none;
           min-width: 0;
@@ -691,13 +748,70 @@ ${MENU_CATEGORIES.map(cat => `${cat.name}: ${cat.items.join(', ')}`).join('\n')}
           background: #e4c590;
           color: #1a1a1a;
           border: none;
-          border-radius: 10px;
+          border-radius: 50%;
           cursor: pointer;
           transition: background 0.15s, transform 0.1s;
         }
-        .chatbot-send-btn:hover:not(:disabled) { background: #d4a574; }
-        .chatbot-send-btn:active:not(:disabled) { transform: scale(0.94); }
+        .chatbot-send-btn:hover:not(:disabled)  { background: #d4a574; }
+        .chatbot-send-btn:active:not(:disabled) { transform: scale(0.93); }
         .chatbot-send-btn:disabled { opacity: 0.45; cursor: not-allowed; }
+
+        /* ============================================================
+           DESKTOP OVERRIDES (640px+) — keep existing popup style
+        ============================================================ */
+        @media (min-width: 640px) {
+          .chatbot-popup {
+            top: auto;
+            left: auto;
+            width: 400px;
+            height: 560px;
+            bottom: 80px;
+            right: 20px;
+            border-radius: 16px;
+            box-shadow: 0 24px 64px rgba(0,0,0,0.6), 0 0 0 1px rgba(228,197,144,0.15);
+            overflow: hidden;
+            animation: chatbot-open 0.22s ease both;
+          }
+          @keyframes chatbot-open {
+            from { opacity: 0; transform: scale(0.96) translateY(12px); }
+            to   { opacity: 1; transform: scale(1)    translateY(0); }
+          }
+          .chatbot-header {
+            height: auto;
+            min-height: auto;
+            padding: 14px 16px;
+            background: linear-gradient(135deg, #e4c590 0%, #d4a574 100%);
+            border-bottom: none;
+          }
+          .chatbot-title-main { font-size: 14px; color: #1a1a1a; }
+          .chatbot-title-sub  { font-size: 11px; color: #444; }
+          .chatbot-close-btn {
+            background: rgba(0,0,0,0.15);
+            border: none;
+            color: #1a1a1a;
+            width: 36px;
+            height: 36px;
+            min-width: 36px;
+          }
+          .chatbot-close-btn:hover { background: rgba(0,0,0,0.28); }
+          .chatbot-messages {
+            padding: 16px;
+            gap: 12px;
+          }
+          .chatbot-bubble { font-size: 15px; }
+          .chatbot-input-area {
+            height: auto;
+            padding: 12px 16px;
+          }
+          .chatbot-input {
+            height: auto;
+            min-height: 44px;
+            border-radius: 10px;
+            font-size: 15px;
+            padding: 10px 14px;
+          }
+          .chatbot-send-btn { border-radius: 10px; }
+        }
 
         /* === Floating button === */
         @keyframes bounce {
