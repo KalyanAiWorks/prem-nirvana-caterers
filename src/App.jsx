@@ -400,7 +400,9 @@ ${MENU_CATEGORIES.map(cat => `${cat.name}: ${cat.items.join(', ')}`).join('\n')}
 
   const sendMessage = async (event) => {
     event.preventDefault()
-    const text = input.trim()
+    const raw = input.trim().slice(0, 500)
+    // Strip any HTML/script tags to prevent prompt injection via markup
+    const text = raw.replace(/<[^>]*>/g, '').trim()
     if (!text || loading) return
 
     const nextMessages = [...messages, { role: "user", content: text }]
@@ -409,7 +411,6 @@ ${MENU_CATEGORIES.map(cat => `${cat.name}: ${cat.items.join(', ')}`).join('\n')}
     setLoading(true)
 
     const apiKey = import.meta.env.VITE_GROQ_API_KEY
-    console.log("[Groq] API key present:", apiKey ? apiKey.slice(0, 10) + "..." : "MISSING")
 
     if (!apiKey) {
       setMessages([
@@ -423,8 +424,7 @@ ${MENU_CATEGORIES.map(cat => `${cat.name}: ${cat.items.join(', ')}`).join('\n')}
       return
     }
 
-    // Build history: take last 10, then drop any leading assistant turns
-    // (Groq requires conversation to start with a user message after system)
+    // Build history: drop leading assistant turns (Groq requires conversation to start with user)
     let history = nextMessages.slice(-6)
     while (history.length > 0 && history[0].role === "assistant") {
       history = history.slice(1)
@@ -433,7 +433,6 @@ ${MENU_CATEGORIES.map(cat => `${cat.name}: ${cat.items.join(', ')}`).join('\n')}
       { role: "system", content: systemPrompt },
       ...history.map((m) => ({ role: m.role, content: m.content })),
     ]
-    console.log("[Groq] Sending", apiMessages.length, "messages (incl system). Roles:", apiMessages.map(m => m.role).join(", "))
 
     const callGroq = async () => {
       const response = await fetch("https://api.groq.com/openai/v1/chat/completions", {
@@ -461,11 +460,9 @@ ${MENU_CATEGORIES.map(cat => `${cat.name}: ${cat.items.join(', ')}`).join('\n')}
       try {
         data = await callGroq()
       } catch (firstErr) {
-        console.warn("[Groq] First attempt failed:", firstErr.message, "— retrying in 1s")
         await new Promise(r => setTimeout(r, 1000))
         data = await callGroq()
       }
-      console.log("[Groq] Response OK, choices:", data.choices?.length)
       const content =
         data.choices?.[0]?.message?.content ||
         "Please contact us on WhatsApp or call +91 99497 53542 for assistance."
@@ -541,6 +538,7 @@ ${MENU_CATEGORIES.map(cat => `${cat.name}: ${cat.items.join(', ')}`).join('\n')}
               onChange={(event) => setInput(event.target.value)}
               className="min-w-0 flex-1 rounded-md border-2 border-[#e4c590] bg-[#0a0a0a] px-3 py-2 text-sm text-white outline-none placeholder:text-[#666] focus:border-[#d4a574]"
               placeholder="Ask about catering..."
+              maxLength={500}
             />
             <button
               type="submit"
