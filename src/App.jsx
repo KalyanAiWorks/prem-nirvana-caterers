@@ -218,19 +218,19 @@ const TABS = [
   {
     id: 'story',
     btn: 'OUR STORY',
-    sub: 'Our Story-Prem Nirvana Caterers',
+    sub: 'Our Story-Skyline AI Caterers',
     h: 'Culture Blended Elegance',
     img: `${IMG}/images/resource/wedd.jpg`,
     body: [
-      'Where Hyderabadi Nizami heritage meets modern celebration -- that\'s Prem Nirvana. Born in a city legendary for its food, we carry forward culinary traditions with a contemporary twist.',
+      'Where Hyderabadi Nizami heritage meets modern celebration -- that\'s Skyline AI. Born in a city legendary for its food, we carry forward culinary traditions with a contemporary twist.',
       'Every event reflects Hyderabad\'s grandeur -- slow-cooked dum biryani, elegant live counters, five-star presentation. Our 35+ expert chefs transform your venue into a culinary destination, every single time.',
     ],
     imageRight: false,
   },
   {
     id: 'why',
-    btn: 'WHY PREM NIRVANA ?',
-    sub: 'Why Prem Nirvana Caterers ?',
+    btn: 'WHY SKYLINE AI ?',
+    sub: 'Why Skyline AI Caterers ?',
     h: 'Elevating Your Experience',
     img: `${IMG}/images/aboutfood.jpg`,
     list: [
@@ -249,7 +249,7 @@ const TABS = [
   {
     id: 'quality',
     btn: 'QUALITY & FOOD',
-    sub: 'Food & Quality-Prem Nirvana Caterers',
+    sub: 'Food & Quality-Skyline AI Caterers',
     h: 'Our Promise to You',
     img: `${IMG}/images/speacial6.jpg`,
     list: [
@@ -270,7 +270,7 @@ const TESTIMONIALS = [
   {
     name: 'Ravi Kumar',
     img: `${IMG}/master/subcategory_images/1781583232`,
-    text: "I want to extend my heartfelt thanks to Gopi and his entire team at Prem Nirvana for the exceptional service and unforgettable food at all my recent functions. The food was absolutely delicious at every event -- each dish was flavorful, fresh, and prepared to perfection. Not only was the food top-notch, but the service was impeccable. It's rare to find a caterer who excels in every aspect, but Shiv and Prem Nirvana have consistently exceeded my expectations every time.",
+    text: "I want to extend my heartfelt thanks to Gopi and his entire team at Skyline AI for the exceptional service and unforgettable food at all my recent functions. The food was absolutely delicious at every event -- each dish was flavorful, fresh, and prepared to perfection. Not only was the food top-notch, but the service was impeccable. It's rare to find a caterer who excels in every aspect, but Shiv and Skyline AI have consistently exceeded my expectations every time.",
   },
   {
     name: 'Shreya Singh',
@@ -280,7 +280,7 @@ const TESTIMONIALS = [
   {
     name: 'Vanshaj Kaul',
     img: `${IMG}/master/subcategory_images/1455053813`,
-    text: "I went to Gopi through a reference who had a good experience using his catering service and my choice of going with Prem Nirvana for my brother's wedding was bang on. Absolutely professional staff. Each dish felt like it was curated individually and wasn't mass produced for a wedding. My caterer for all future events is fixed now. Would highly recommend.",
+    text: "I went to Gopi through a reference who had a good experience using his catering service and my choice of going with Skyline AI for my brother's wedding was bang on. Absolutely professional staff. Each dish felt like it was curated individually and wasn't mass produced for a wedding. My caterer for all future events is fixed now. Would highly recommend.",
   },
   {
     name: 'Sohan Patel',
@@ -290,7 +290,7 @@ const TESTIMONIALS = [
   {
     name: 'Miss Roma',
     img: `${IMG}/master/subcategory_images/7031287`,
-    text: 'I had an outstanding experience with Prem Nirvana catering services during my wedding. Mr. Gopi and his team went above and beyond to ensure a seamless and delightful dining experience for our guests. The professionalism and attention to detail added an extra layer of sophistication to our special day.',
+    text: 'I had an outstanding experience with Skyline AI catering services during my wedding. Mr. Gopi and his team went above and beyond to ensure a seamless and delightful dining experience for our guests. The professionalism and attention to detail added an extra layer of sophistication to our special day.',
   },
 ]
 
@@ -377,7 +377,7 @@ function FloatingChatbot() {
   const [messages, setMessages] = useState([
     {
       role: "assistant",
-      content: "Namaste! I'm your Prem Nirvana Caterers assistant. Ask me about our menu, services, or events!",
+      content: "Namaste! I'm your Skyline AI ASSISTANT. Ask me about our menu, services, or events!",
     },
   ])
   const messagesEndRef = useRef(null)
@@ -417,15 +417,15 @@ function FloatingChatbot() {
   }, [open])
 
 
-  const systemPrompt = `Keep responses SHORT — maximum 2-3 sentences. Be friendly but concise. Don't give long paragraphs. If listing menu items, use a compact list. Only elaborate if the user specifically asks for more details.
+  const systemPrompt = `You are the AI assistant for Skyline AI Caterers, Hyderabad. Reply in 2-3 sentences max. Be friendly and concise.
 
-You are the AI assistant for Prem Nirvana Caterers, Hyderabad. Phone: +91 99497 53542. Services: weddings, corporate events, birthdays, destination weddings. Pure veg AND non-veg available. 35+ chefs, 12+ years experience.
+CONTACT: +91 9542388553 (WhatsApp/Call). Services: weddings, corporate events, birthdays, destination weddings. 35+ chefs, 12+ years experience. Pure veg AND non-veg available.
 
-PRICING: Always say "Please contact us on WhatsApp or call +91 99497 53542 for pricing."
-BOOKING: Share phone +91 99497 53542.
+PRICING & BOOKING: Always say "Please contact us on WhatsApp or call +91 9542388553."
 
-FULL MENU:
-${MENU_CATEGORIES.map(cat => `${cat.name}: ${cat.items.join(', ')}`).join('\n')}`
+MENU CATEGORIES (30+): Salads, Drinks & Juices, Sweets, Tiffins, Rotis, Veg Starters, Veg Currys, Rice Items, Veg Biryanis, Dal Items, Fry Currys, Chutneys, Pickles, Sambars & Rasams, Raithas & Curd, Desserts, Ice Cream Flavors, Snacks, Fruits, Chaat Items, Live Counters, Non-Veg Starters, Chicken Snacks, Fish Snacks, Mutton Snacks, Non-Veg Curries, Non-Veg Biryanis.
+
+KEY DISHES: Hyderabadi Dum Biryani (veg & non-veg), Paneer Tikka, Chicken 65, Gulab Jamun, Rasmalai, live counters (Dosa, Chaat, Tandoori, Juice, Ice Cream). For the full menu, tell users to click "Our Menu" on the website.`
 
   const sendMessage = async (event) => {
     event.preventDefault()
@@ -446,7 +446,7 @@ ${MENU_CATEGORIES.map(cat => `${cat.name}: ${cat.items.join(', ')}`).join('\n')}
         ...nextMessages,
         {
           role: "assistant",
-          content: "The chatbot needs VITE_GROQ_API_KEY configured. Please contact us directly on WhatsApp or call +91 99497 53542.",
+          content: "The chatbot needs VITE_GROQ_API_KEY configured. Please contact us directly on WhatsApp or call +91 9542388553.",
         },
       ])
       setLoading(false)
@@ -494,7 +494,7 @@ ${MENU_CATEGORIES.map(cat => `${cat.name}: ${cat.items.join(', ')}`).join('\n')}
       }
       const content =
         data.choices?.[0]?.message?.content ||
-        "Please contact us on WhatsApp or call +91 99497 53542 for assistance."
+        "Please contact us on WhatsApp or call +91 9542388553 for assistance."
       setMessages([...nextMessages, { role: "assistant", content }])
     } catch (error) {
       console.error("[Groq] Error after retry:", error)
@@ -502,7 +502,7 @@ ${MENU_CATEGORIES.map(cat => `${cat.name}: ${cat.items.join(', ')}`).join('\n')}
         ...nextMessages,
         {
           role: "assistant",
-          content: "I couldn't connect right now. Please call or WhatsApp +91 99497 53542 for immediate help.",
+          content: "I couldn't connect right now. Please call or WhatsApp +91 9542388553 for immediate help.",
         },
       ])
     } finally {
@@ -518,9 +518,9 @@ ${MENU_CATEGORIES.map(cat => `${cat.name}: ${cat.items.join(', ')}`).join('\n')}
           {/* Header */}
           <div className="chatbot-header">
             <div style={{ display: 'flex', alignItems: 'center', gap: '10px', minWidth: 0 }}>
-              <img src="/logo.png" alt="Prem Nirvana" style={{ height: '30px', width: 'auto', flexShrink: 0 }} />
+              <img src="/logo.png" alt="Skyline AI" style={{ height: '30px', width: 'auto', flexShrink: 0 }} />
               <div style={{ minWidth: 0 }}>
-                <div className="chatbot-title-main">PREM NIRVANA AI</div>
+                <div className="chatbot-title-main">SKYLINE AI ASSISTANT</div>
                 <div className="chatbot-title-sub">Ask about menus, pricing &amp; events</div>
               </div>
             </div>
@@ -879,7 +879,7 @@ function buildWhatsAppMessage(selectedItems, form) {
     : 'Not specified'
 
   const eventTypeText = form.eventType || 'Not specified'
-  const header = `🍽️ *Catering Enquiry for ${eventTypeText} -- Prem Nirvana Caterers*`
+  const header = `🍽️ *Catering Enquiry for ${eventTypeText} -- Skyline AI Caterers*`
 
   return [
     header,
@@ -948,11 +948,11 @@ function MenuModal({ open, onClose, activeMenu, setActiveMenu }) {
       <div className="menu-modal-pad shrink-0 border-b border-white/10 flex items-center gap-3 sm:gap-5" style={{ paddingTop: '12px', paddingBottom: '12px' }}>
         {/* left: logo — hidden on small phones */}
         <div className="hidden sm:flex flex-1 items-center">
-          <img src="/logo.png" alt="Prem Nirvana Caterers" className="nav-logo-image" style={{ display: 'block' }} />
+          <img src="/logo.png" alt="Skyline AI Caterers" className="nav-logo-image" style={{ display: 'block' }} />
         </div>
         {/* centre: title */}
         <div className="flex-1 sm:flex-none text-center" style={{ flexShrink: 0 }}>
-          <div className="subtitle mb-1" style={{ fontSize: 'clamp(10px, 2.5vw, 16px)', letterSpacing: '2px' }}>Prem Nirvana Caterers</div>
+          <div className="subtitle mb-1" style={{ fontSize: 'clamp(10px, 2.5vw, 16px)', letterSpacing: '2px' }}>Skyline AI Caterers</div>
           <h2 style={{ fontFamily: '"Forum", serif', color: '#e4c590', fontSize: 'clamp(20px, 5vw, 38px)', fontWeight: 400, lineHeight: 1.2, margin: 0 }}>
             Our Full Menu
           </h2>
@@ -1149,7 +1149,7 @@ function AdminPage() {
   const API_URL = `http://${window.location.hostname}:3001`
 
   const handleAuth = () => {
-    if (password === 'premnirvana2025') {
+    if (password === 'skylineai2025') {
       setAuthenticated(true)
       setPassword('')
     } else {
@@ -1526,10 +1526,10 @@ export default function App() {
         }}
       >
         <div className="max-w-container mx-auto px-5 flex items-center justify-between">
-          <a href="#home" className="nav-logo-link shrink-0 leading-none" aria-label="Prem Nirvana Caterers home">
+          <a href="#home" className="nav-logo-link shrink-0 leading-none" aria-label="Skyline AI Caterers home">
             <img
               src="/logo.png"
-              alt="Prem Nirvana Caterers"
+              alt="Skyline AI Caterers"
               className="nav-logo-image object-contain"
               style={{ background: 'transparent', border: 'none', boxShadow: 'none' }}
             />
@@ -1610,7 +1610,7 @@ export default function App() {
           <div className="max-w-container mx-auto px-5 w-full flex justify-center">
             <div className="max-w-3xl text-center">
               <div className="text-gold tracking-widest text-sm uppercase animate-fade-in-up">
-                PREM NIRVANA CATERERS
+                SKYLINE AI CATERERS
               </div>
               <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white text-center mb-4 animate-fade-in-up">
                 From Our Kitchen to Your Celebration
@@ -1630,15 +1630,15 @@ export default function App() {
           <div className="relative">
             <img
               src={`${IMG}/images/resource/restaurant-11.jpg`}
-              alt="Prem Nirvana Caterers"
+              alt="Skyline AI Caterers"
               className="w-full h-[240px] sm:h-[320px] md:h-[400px] lg:h-[480px] object-cover"
             />
           </div>
           <div>
-            <SectionTitle sub="Prem Nirvana Caterers" title="Every Dish Tells Our Story" />
+            <SectionTitle sub="Skyline AI Caterers" title="Every Dish Tells Our Story" />
             <div className="mt-6 space-y-4 text-muted leading-relaxed text-[15px]">
               <p>
-                Prem Nirvana Caterers is one of the most loved and sought-after catering companies based out of
+                Skyline AI Caterers is one of the most loved and sought-after catering companies based out of
                 Hyderabad. We offer end-to-end catering services for all kinds of Social and Corporate Events. Our
                 philosophy is to produce great work at reasonable prices. We work only for one thing -- our clients'
                 happiness.
@@ -1763,17 +1763,6 @@ export default function App() {
       >
         <div className="absolute inset-0 bg-ink-deep/85" />
         <div className="relative z-10 max-w-container mx-auto px-5">
-          <div className="flex justify-center mb-12 md:mb-20">
-            <a
-              href={`${IMG}/images/video.mp4`}
-              target="_blank"
-              rel="noreferrer"
-              className="relative flex items-center justify-center w-16 h-16 md:w-24 md:h-24 rounded-full bg-gold text-ink-deep text-2xl md:text-3xl ripple-ring"
-              aria-label="Watch video"
-            >
-              ▶
-            </a>
-          </div>
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-10">
             {STATS.map((s) => (
               <StatBlock key={s.label} stat={s} run={statsRun} />
@@ -1990,11 +1979,11 @@ export default function App() {
               <div className="relative z-10 text-center">
                 <div className="subtitle mb-2">We Are</div>
                 <h5 className="text-3xl text-white mb-6">Premium Hyderabadi Catering</h5>
-                <img src="/logo.png" alt="Prem Nirvana Caterers" className="mx-auto mb-6 h-24 md:h-36 w-auto object-contain" />
+                <img src="/logo.png" alt="Skyline AI Caterers" className="mx-auto mb-6 h-24 md:h-36 w-auto object-contain" />
                 <p className="text-white/85 leading-relaxed mb-6">
                   Call: +91 7780797066
                   <br />
-                  gopinath@premnirvanacaterers.com
+                  skyline.aiwork@gmail.com
                 </p>
                 <a href="tel:+917780797066" className="theme-btn theme-btn-outline">
                   Call Now
@@ -2014,7 +2003,7 @@ export default function App() {
             {INSTAGRAM_IMAGES.map((image) => (
               <a
                 key={image.src}
-                href="https://www.instagram.com/premnirvanaevents"
+                href="https://www.instagram.com/skylineaievents"
                 target="_blank"
                 rel="noreferrer"
                 className="group aspect-square overflow-hidden rounded-lg border border-white/10"
@@ -2040,7 +2029,7 @@ export default function App() {
         <div className="relative z-10 max-w-container mx-auto px-5">
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 md:gap-10 pb-10 md:pb-14 border-b border-gold/30">
             <div>
-              <img src="/logo.png" alt="Prem Nirvana Caterers" className="h-24 md:h-36 w-auto object-contain" />
+              <img src="/logo.png" alt="Skyline AI Caterers" className="h-24 md:h-36 w-auto object-contain" />
             </div>
 
             <div>
@@ -2074,7 +2063,7 @@ export default function App() {
 
                 {/* Instagram */}
                 <a
-                  href="https://www.instagram.com/premnirvanaevents"
+                  href="https://www.instagram.com/skylineaievents"
                   target="_blank"
                   rel="noreferrer"
                   className="group relative w-[50px] h-[50px] flex items-center justify-center rounded-full border-2 border-gold hover:bg-gold transition-all duration-200"
@@ -2118,19 +2107,18 @@ export default function App() {
               <h3 style={{ fontSize: '18px' }} className="text-gold mb-5 font-semibold">Contact Information</h3>
               <ul className="space-y-4 text-muted text-sm">
                 <li className="leading-relaxed">
-                  <a href="https://www.google.com/maps/place/PREM+NIRVANA+CATERERS/@17.335448,78.530705,16z/data=!4m6!3m5!1s0x3bcba390dfb4b941:0xcaf953f6764fbb03!8m2!3d17.3354483!4d78.5307051!16s%2Fg%2F11rkm_b2lx?hl=en&entry=ttu" target="_blank" rel="noreferrer" className="hover:text-gold transition-colors duration-200">
-                    📍 Beside Mega City School,<br/>
-                    <span className="ml-6">Old Gayatri Nagar, Srinivasa Gayatri Nagar,</span><br/>
-                    <span className="ml-6">Kharmanghat, Hyderabad - 500079</span>
+                  <a href="https://www.google.com/maps/place/Tarnaka,+Hyderabad" target="_blank" rel="noreferrer" className="hover:text-gold transition-colors duration-200">
+                    📍 Skyline AI Caterers,<br/>
+                    <span className="ml-6">Tarnaka, Hyderabad</span>
                   </a>
                   <br/>
-                  <a href="https://www.google.com/maps/place/PREM+NIRVANA+CATERERS/@17.335448,78.530705,16z/data=!4m6!3m5!1s0x3bcba390dfb4b941:0xcaf953f6764fbb03!8m2!3d17.3354483!4d78.5307051!16s%2Fg%2F11rkm_b2lx?hl=en&entry=ttu" target="_blank" rel="noreferrer" className="text-gold underline hover:text-white transition-colors duration-200 text-xs inline-block mt-2">
+                  <a href="https://www.google.com/maps/place/Tarnaka,+Hyderabad" target="_blank" rel="noreferrer" className="text-gold underline hover:text-white transition-colors duration-200 text-xs inline-block mt-2">
                     📍 View on Google Maps
                   </a>
                 </li>
                 <li>
-                  <a href="mailto:gopinath@premnirvanacaterers.com" className="hover:text-gold transition-colors duration-200 flex items-center gap-2">
-                    📧 <span>gopinath@premnirvanacaterers.com</span>
+                  <a href="mailto:skyline.aiwork@gmail.com" className="hover:text-gold transition-colors duration-200 flex items-center gap-2">
+                    📧 <span>skyline.aiwork@gmail.com</span>
                   </a>
                 </li>
                 <li>
@@ -2138,7 +2126,7 @@ export default function App() {
                     📞 <div className="flex gap-2">
                       <a href="tel:+917780797066" className="hover:text-gold transition-colors duration-200">7780797066</a>
                       <span>/</span>
-                      <a href="tel:+919949753542" className="hover:text-gold transition-colors duration-200">9949753542</a>
+                      <a href="tel:+919542388553" className="hover:text-gold transition-colors duration-200">9542388553</a>
                     </div>
                   </div>
                 </li>
@@ -2148,10 +2136,10 @@ export default function App() {
 
 
           <div className="pt-10">
-            <a href="https://www.google.com/maps/place/PREM+NIRVANA+CATERERS/@17.335448,78.530705,16z/data=!4m6!3m5!1s0x3bcba390dfb4b941:0xcaf953f6764fbb03!8m2!3d17.3354483!4d78.5307051!16s%2Fg%2F11rkm_b2lx?hl=en&entry=ttu" target="_blank" rel="noreferrer" className="block hover:opacity-90 transition-opacity">
+            <a href="https://www.google.com/maps/place/Tarnaka,+Hyderabad" target="_blank" rel="noreferrer" className="block hover:opacity-90 transition-opacity">
               <iframe
-                title="Prem Nirvana Caterers Hyderabad location"
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3807.5!2d78.5307051!3d17.3354483!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bcba390dfb4b941%3A0xcaf953f6764fbb03!2sPREM%20NIRVANA%20CATERERS!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin"
+                title="Skyline AI Caterers Hyderabad location"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3807.0!2d78.52!3d17.36!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bcc!2sTarnaka%20Hyderabad!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin"
                 className="h-72 w-full rounded-lg border border-white/10 pointer-events-none"
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"
@@ -2160,13 +2148,13 @@ export default function App() {
           </div>
 
           <div className="border-t border-gold/30 pt-8 text-center text-muted text-xs">
-            © 2025 Prem Nirvana Caterers. All rights reserved.
+            © 2025 Skyline AI Caterers. All rights reserved.
           </div>
         </div>
       </footer>
 
       <a
-        href="https://wa.me/919949753542?text=Hi!%20I'm%20interested%20in%20Prem%20Nirvana%20Caterers%20services.%20Can%20you%20share%20more%20details?"
+        href="https://wa.me/919542388553?text=Hi!%20I'm%20interested%20in%20Skyline%20AI%20Caterers%20services.%20Can%20you%20share%20more%20details?"
         target="_blank"
         rel="noreferrer"
         className="contact-float whatsapp-float fixed bottom-[88px] left-5 z-[60] flex h-[60px] w-[60px] items-center justify-center rounded-full bg-[#25D366] text-white shadow-2xl transition-transform hover:scale-105"
@@ -2178,9 +2166,9 @@ export default function App() {
       </a>
 
       <a
-        href="tel:+919949753542"
+        href="tel:+919542388553"
         className="contact-float call-float fixed bottom-5 left-5 z-[60] flex h-[60px] w-[60px] items-center justify-center rounded-full bg-[#1d74d8] text-white shadow-2xl transition-transform hover:scale-105"
-        aria-label="Call Prem Nirvana Caterers"
+        aria-label="Call Skyline AI Caterers"
       >
         <svg viewBox="0 0 24 24" aria-hidden="true" className="h-7 w-7 fill-current">
           <path d="M6.62 10.79c1.44 2.83 3.76 5.15 6.59 6.59l2.2-2.2c.28-.28.68-.37 1.04-.25 1.14.38 2.37.59 3.61.59.57 0 1 .43 1 1V20c0 .57-.43 1-1 1C10.61 21 3 13.39 3 4c0-.57.43-1 1-1h3.5c.57 0 1 .43 1 1 0 1.24.21 2.47.59 3.61.11.36.03.74-.25 1.04l-2.22 2.14Z" />
